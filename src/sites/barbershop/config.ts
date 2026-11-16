@@ -28,7 +28,8 @@ export const config: SiteConfig = {
   },
   social: [{ network: "instagram", url: "https://instagram.com/ica.cuts" }],
   branding: {
-    logo: "/logos/logo-icacuts.png",
+    // Vectorizado del logo de AgendaPro (200 px); reemplazar si el dueño entrega el original.
+    logo: "/logos/logo-icacuts.svg",
   },
   // Negro y dorado, como el afiche del local.
   theme: {
@@ -47,6 +48,7 @@ export const config: SiteConfig = {
     title: "Ica Cuts | Barbería en Maipú",
     description:
       "Cortes, barba, color y limpieza facial en Maipú. Abierto todos los días de 10:00 a 21:30. Agenda tu hora en línea.",
+    ogImage: "/og-image.png",
     keywords: ["barbería Maipú", "corte de pelo Maipú", "barbería Santiago", "academia de barbería"],
   },
   sections: {

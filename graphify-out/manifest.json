@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "src/sites/barbershop/config.ts": {
-    "mtime": 1794866695.5330157,
-    "seen": 1794866776.984756,
-    "ast_hash": "5ffc41caf9a6ccab5f6c40a8a24b4f55",
+    "mtime": 1794867427.0547326,
+    "seen": 1794867456.8141189,
+    "ast_hash": "3e3c85429f65082494f78e1e027ebd6e",
     "semantic_hash": ""
   },
   "src/sites/barbershop/content.ts": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1794867274.401692,
-    "seen": 1794867277.753092,
+    "mtime": 1794867449.4592035,
+    "seen": 1794867456.8141031,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
@@ -527,10 +527,28 @@
     "ast_hash": "2cd269afd2fddc0653a70c0219583b32",
     "semantic_hash": ""
   },
-  "public/logos/logo-icacuts.png": {
-    "mtime": 1794866503.5462298,
-    "seen": 1794866776.984768,
-    "ast_hash": "cf13873379866083a3256924b33f5fe9",
+  "public/logos/logo-icacuts.svg": {
+    "mtime": 1794867416.7103057,
+    "seen": 1794867456.814132,
+    "ast_hash": "a7dec37fb99c92368863439f73199c14",
+    "semantic_hash": ""
+  },
+  "public/og-image.png": {
+    "mtime": 1794867416.990019,
+    "seen": 1794867456.814133,
+    "ast_hash": "e8ff5fb4c14d107f1a89c98b6822c0d1",
+    "semantic_hash": ""
+  },
+  "src/app/apple-icon.png": {
+    "mtime": 1794867416.8370764,
+    "seen": 1794867456.814133,
+    "ast_hash": "f5540574e178191adccb45a8214efa62",
+    "semantic_hash": ""
+  },
+  "src/app/icon.png": {
+    "mtime": 1794867416.829725,
+    "seen": 1794867456.8141341,
+    "ast_hash": "1f5c18ab312598cbcc6ee41e6824b226",
     "semantic_hash": ""
   },
   "package-lock.json": {
