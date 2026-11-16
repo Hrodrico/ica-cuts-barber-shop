@@ -23,9 +23,13 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
   const contactLines = [email, phone, [address, city].filter(Boolean).join(", ")].filter(
     (line): line is string => Boolean(line),
   );
-  const cta = site.sections.contact
-    ? { label: site.actions?.quote ?? site.labels.contact, href: `/#${sectionIds.contact}` }
-    : undefined;
+  // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
+  const { booking } = site.contact;
+  const cta = booking
+    ? { label: booking.label, href: booking.url }
+    : site.sections.contact
+      ? { label: site.actions?.quote ?? site.labels.contact, href: `/#${sectionIds.contact}` }
+      : undefined;
 
   return (
     <>

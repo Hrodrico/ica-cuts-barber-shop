@@ -3,7 +3,7 @@ import type { ContactInfo } from "@/types/site";
 import { emailUrl, phoneUrl, whatsappUrl } from "@/lib/contact";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon, WhatsappIcon } from "@/components/ui/icons";
+import { CalendarIcon, ClockIcon, MailIcon, MapPinIcon, PhoneIcon, WhatsappIcon } from "@/components/ui/icons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type Props = {
@@ -27,7 +27,7 @@ function Item({ icon, title, children }: { icon: ReactNode; title: string; child
 }
 
 export function ContactSection({ id, label, contact }: Props) {
-  const { phone, email, whatsapp, address, city, mapUrl, hours } = contact;
+  const { phone, email, whatsapp, booking, address, city, mapUrl, hours } = contact;
   const location = [address, city].filter(Boolean).join(", ");
   const iconClass = "h-5 w-5";
 
@@ -40,12 +40,20 @@ export function ContactSection({ id, label, contact }: Props) {
             title={label}
             description="Escríbenos y te responderemos a la brevedad."
           />
-          {whatsapp && (
-            <ButtonLink href={whatsappUrl(whatsapp)} external variant="whatsapp">
-              <WhatsappIcon className={iconClass} />
-              Escríbenos por WhatsApp
-            </ButtonLink>
-          )}
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {booking && (
+              <ButtonLink href={booking.url} external>
+                <CalendarIcon className={iconClass} />
+                {booking.label}
+              </ButtonLink>
+            )}
+            {whatsapp && (
+              <ButtonLink href={whatsappUrl(whatsapp)} external variant="whatsapp">
+                <WhatsappIcon className={iconClass} />
+                Escríbenos por WhatsApp
+              </ButtonLink>
+            )}
+          </div>
         </div>
 
         <ul className="space-y-6">          

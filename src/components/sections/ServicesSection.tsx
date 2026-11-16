@@ -24,7 +24,13 @@ export function ServicesSection({ id, label, services }: Props) {
               )}
               <div className="p-6">
                 <div className="mb-4 h-1 w-10 rounded-full bg-accent" aria-hidden="true" />
-                <h3 className="text-lg font-semibold">{service.title}</h3>
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="text-lg font-semibold">{service.title}</h3>
+                  {service.price && (
+                    <p className="shrink-0 font-semibold text-accent-text">{service.price}</p>
+                  )}
+                </div>
+                {service.duration && <p className="mt-1 text-sm text-muted">{service.duration}</p>}
                 <p className="mt-2 text-sm text-muted">{service.description}</p>
               </div>
             </li>

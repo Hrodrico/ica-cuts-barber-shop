@@ -27,6 +27,15 @@ export type ContactInfo = {
     /** Mensaje precargado al abrir el chat. */
     message?: string;
   };
+  /**
+   * Agenda en línea externa (ej: AgendaPro). Si existe, el botón principal del header y la
+   * sección de contacto llevan a ella; la agenda envía las confirmaciones por correo.
+   */
+  booking?: {
+    url: string;
+    /** Texto del botón, ej: "Agenda tu hora". */
+    label: string;
+  };
   address?: string;
   city?: string;
   /** Enlace a Google Maps u otro servicio de mapas. */
