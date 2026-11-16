@@ -36,7 +36,7 @@ jobs:
       fail-fast: false
       matrix:
         # En un clon de cliente, deja solo su sitio (o elimina la matriz y SITE_ID).
-        site: [construction, barbershop]
+        site: [barbershop]
     env:
       SITE_ID: ${{ matrix.site }}
     steps:

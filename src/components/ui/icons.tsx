@@ -89,6 +89,13 @@ export const ClockIcon = (props: IconProps) => (
   </svg>
 );
 
+export const CalendarIcon = (props: IconProps) => (
+  <svg {...base} {...props}>
+    <rect x="3" y="4" width="18" height="18" rx="2" />
+    <path d="M16 2v4M8 2v4M3 10h18" />
+  </svg>
+);
+
 export const MenuIcon = (props: IconProps) => (
   <svg {...base} {...props}>
     <path d="M4 6h16M4 12h16M4 18h16" />

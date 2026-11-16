@@ -37,7 +37,7 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
                 width={0}
                 height={0}
                 sizes="240px"
-                className={`h-11 w-auto ${logoDark ? "dark:hidden" : ""}`}
+                className={`h-14 w-auto ${logoDark ? "dark:hidden" : ""}`}
                 priority
               />
               {logoDark && (
@@ -47,7 +47,7 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
                   width={0}
                   height={0}
                   sizes="240px"
-                  className="hidden h-11 w-auto dark:block"
+                  className="hidden h-14 w-auto dark:block"
                   priority
                 />
               )}
@@ -77,7 +77,7 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
           {/* La visibilidad va en el contenedor: el inline-flex de ButtonLink le gana a "hidden". */}
           {cta && (
             <div className="hidden lg:block">
-              <ButtonLink href={cta.href} className="px-5 py-2">
+              <ButtonLink href={cta.href} external={/^https?:\/\//.test(cta.href)} className="px-5 py-2">
                 {cta.label}
               </ButtonLink>
             </div>

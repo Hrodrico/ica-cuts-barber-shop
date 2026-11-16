@@ -39,6 +39,10 @@ export type Service = {
   id: string;
   title: string;
   description: string;
+  /** Precio visible tal cual se escribe, ej: "$14.000" o "Desde $50.000". */
+  price?: string;
+  /** Duración visible, ej: "40 min" o "2 h". */
+  duration?: string;
   image?: ImageAsset;
 };
 

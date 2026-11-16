@@ -1,51 +1,59 @@
 import type { SiteConfig } from "@/types/site";
 
-// Sitio de demostración para validar que la base sirve a otro rubro sin tocar componentes.
+// IcaCuts: datos tomados de su página de AgendaPro (sucursal 28448) y del afiche del local.
 export const config: SiteConfig = {
-  name: "Barbería Ejemplo",
-  tagline: "Cortes clásicos y modernos",
-  description: "Barbería de barrio con cortes, perfilado de barba y afeitado tradicional.",
-  url: "https://www.example.com",
+  name: "Ica Cuts",
+  tagline: "Barbería y academia de barbería en Maipú",
+  description:
+    "Barbería, salón de manicure y academia de barbería en Maipú. Profesionalismo, estilo, comodidad y la mejor atención.",
+  // Provisional hasta tener dominio propio.
+  url: "https://ica-cuts-barber-shop.vercel.app",
   locale: "es-CL",
   contact: {
-    phone: "+56 9 0000 0000",
-    email: "hola@example.com",
+    phone: "+56 9 7841 3652",
+    email: "ica.cutscl@gmail.com",
     whatsapp: {
-      number: "+56 9 0000 0000",
-      message: "Hola, quiero reservar una hora.",
+      number: "+56 9 7841 3652",
+      message: "¡Hola! Vi su sitio web y quiero agendar una hora.",
     },
-    address: "Av. Ejemplo 123",
-    city: "Valparaíso, Chile",
-    hours: [
-      { label: "Martes a sábado", value: "10:00 – 20:00" },
-      { label: "Domingo y lunes", value: "Cerrado" },
-    ],
+    booking: {
+      url: "https://icacuts.site.agendapro.com/cl/sucursal/28448",
+      label: "Agenda tu hora",
+    },
+    address: "Parque Central Poniente 149",
+    city: "Maipú, Santiago",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=Parque+Central+Poniente+149%2C+Maip%C3%BA%2C+Santiago",
+    hours: [{ label: "Lunes a domingo", value: "10:00 – 21:30" }],
   },
-  social: [
-    { network: "instagram", url: "https://instagram.com/" },
-    { network: "tiktok", url: "https://tiktok.com/" },
-  ],
-  branding: {},
+  social: [{ network: "instagram", url: "https://instagram.com/ica.cuts" }],
+  branding: {
+    logo: "/logos/logo-icacuts.png",
+  },
+  // Negro y dorado, como el afiche del local.
   theme: {
-    primary: "#C9A227",
+    primary: "#D4A84B",
     primaryForeground: "#111111",
-    accent: "#B23A2E",
-    accentForeground: "#FFFFFF",
-    accentText: "#E0675B",
-    background: "#111111",
-    foreground: "#F3EFE7",
-    surface: "#1C1B19",
-    muted: "#A39E93",
-    border: "#2E2C29",
+    accent: "#E8C374",
+    accentForeground: "#111111",
+    accentText: "#E8C374",
+    background: "#0E0E0E",
+    foreground: "#F5F1E8",
+    surface: "#1A1917",
+    muted: "#A8A196",
+    border: "#2E2C28",
   },
   seo: {
-    title: "Barbería Ejemplo | Cortes y barba en Valparaíso",
-    description: "Cortes, perfilado de barba y afeitado tradicional. Reserva por WhatsApp.",
+    title: "Ica Cuts | Barbería en Maipú",
+    description:
+      "Cortes, barba, color y limpieza facial en Maipú. Abierto todos los días de 10:00 a 21:30. Agenda tu hora en línea.",
+    keywords: ["barbería Maipú", "corte de pelo Maipú", "barbería Santiago", "academia de barbería"],
   },
   sections: {
     about: true,
     services: true,
-    projects: true,
+    // Sin fotos reales de cortes todavía.
+    projects: false,
     reviews: true,
     contact: true,
   },
@@ -54,6 +62,6 @@ export const config: SiteConfig = {
     services: "Servicios y precios",
     projects: "Nuestros cortes",
     reviews: "Reseñas",
-    contact: "Reserva tu hora",
+    contact: "Contacto",
   },
 };
