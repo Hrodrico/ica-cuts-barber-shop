@@ -5,7 +5,7 @@ export const content: SiteContent = {
     eyebrow: "Barbería en Maipú",
     title: "Tu estilo, con la mejor atención",
     description:
-      "Cortes, barba, color y limpieza facial con barberos profesionales. Abierto todos los días de 10:00 a 21:30.",
+      "Cortes, barba, color y limpieza facial con barberos profesionales. Abierto todos los días: de lunes a sábado de 10:00 a 21:30 y domingo hasta las 21:00.",
     // Imagen provisional (la portada de AgendaPro); reemplazar por fotos del local.
     images: [
       {

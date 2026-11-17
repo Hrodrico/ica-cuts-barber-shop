@@ -35,7 +35,11 @@ export const config: SiteConfig = {
     city: "Maipú, Santiago",
     mapUrl:
       "https://www.google.com/maps/search/?api=1&query=Parque+Central+Poniente+149%2C+Maip%C3%BA%2C+Santiago",
-    hours: [{ label: "Lunes a domingo", value: "10:00 – 21:30" }],
+    // Según la agenda de los barberos en AgendaPro: el domingo el último turno termina a las 21:00.
+    hours: [
+      { label: "Lunes a sábado", value: "10:00 – 21:30" },
+      { label: "Domingo", value: "10:00 – 21:00" },
+    ],
   },
   social: [{ network: "instagram", url: "https://instagram.com/ica.cuts" }],
   branding: {
@@ -60,7 +64,7 @@ export const config: SiteConfig = {
   seo: {
     title: "Ica Cuts | Barbería en Maipú",
     description:
-      "Cortes, barba, color y limpieza facial en Maipú. Abierto todos los días de 10:00 a 21:30. Agenda tu hora en línea.",
+      "Cortes, barba, color y limpieza facial en Maipú. Abierto todos los días desde las 10:00. Agenda tu hora en línea.",
     ogImage: "/og-image.png",
     keywords: ["barbería Maipú", "corte de pelo Maipú", "barbería Santiago", "academia de barbería"],
   },
