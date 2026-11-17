@@ -1,18 +1,16 @@
 {
   "1": "devDependencies",
   "3": "icons.tsx",
-  "5": "index.ts",
+  "5": "generate-image-placeholders.mjs",
   "7": "next",
   "9": "vitest",
   "11": "eslint.config.mjs",
   "19": "next",
   "20": "ImageCarousel.test.tsx",
   "21": "trabajos/[slug]/page.tsx",
-  "22": "package.json",
-  "23": "Header.tsx",
+  "22": "next.config.ts",
+  "23": "@vitejs/plugin-react",
   "24": "navigation.ts",
-  "25": "dependencies",
   "26": ".close",
-  "27": ".showModal",
-  "28": "Rating.tsx"
+  "27": ".showModal"
 }

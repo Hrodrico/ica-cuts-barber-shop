@@ -28,7 +28,7 @@ export function Breadcrumbs({ items, className = "" }: Props) {
                   {item.label}
                 </span>
               ) : (
-                <Link href={item.href} className="rounded transition hover:text-foreground hover:underline">
+                <Link href={item.href} className="rounded transition hover:text-foreground hover:underline active:text-foreground">
                   {item.label}
                 </Link>
               )}

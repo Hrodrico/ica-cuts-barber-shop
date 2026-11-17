@@ -63,7 +63,7 @@ export function ThemeToggle() {
       aria-label="Modo oscuro"
       aria-pressed={dark}
       title={dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      className="flex h-11 w-11 items-center justify-center rounded-full text-foreground/80 transition hover:bg-accent/15 hover:text-accent-text"
+      className="flex h-11 w-11 items-center justify-center rounded-full text-foreground/80 transition hover:bg-accent/15 hover:text-accent-text active:scale-95 active:bg-accent/15 motion-reduce:active:scale-100"
     >
       {/* Los íconos se alternan por CSS (variante dark): así coinciden desde el primer pintado. */}
       <MoonIcon className="h-5 w-5 dark:hidden" />

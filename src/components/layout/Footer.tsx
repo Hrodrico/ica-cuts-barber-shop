@@ -31,7 +31,7 @@ export function Footer({ name, tagline, navigation, social, contactLines, year }
           <ul className="-mt-3 text-sm">
             {navigation.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="inline-block py-3 opacity-80 transition hover:opacity-100">
+                <Link href={item.href} className="inline-block py-3 opacity-80 transition hover:opacity-100 active:opacity-100">
                   {item.label}
                 </Link>
               </li>

@@ -33,10 +33,10 @@ export function BookingOptions({ options, currentHref }: Props) {
                 ref={current ? currentRef : undefined}
                 href={option.href}
                 aria-current={current ? "page" : undefined}
-                className={`inline-flex rounded-full border px-4 py-2 text-sm font-medium whitespace-nowrap transition ${
+                className={`inline-flex rounded-full border px-4 py-2 text-sm font-medium whitespace-nowrap transition active:scale-[0.97] motion-reduce:active:scale-100 ${
                   current
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border hover:border-accent hover:text-accent-text"
+                    : "border-border hover:border-accent hover:text-accent-text active:border-accent active:bg-accent/15"
                 }`}
               >
                 {option.label}

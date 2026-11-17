@@ -1,3 +1,4 @@
+import { BookingFrame } from "./BookingFrame";
 import { BookingOptions } from "./BookingOptions";
 
 export type BookingOption = {
@@ -43,14 +44,8 @@ export function BookingEmbed({ src, frameTitle, options = [], currentHref, id }:
 
       {/* En móvil, de borde a borde: el ancho completo de la pantalla para la agenda. */}
       <div id={id} className="-mx-4 mt-3 flex min-h-105 flex-1 sm:mx-0">
-        <iframe
-          // key: al cambiar de profesional se monta un iframe nuevo en vez de reutilizar el historial.
-          key={src}
-          src={src}
-          title={frameTitle}
-          allow="payment"
-          className="block w-full flex-1 border-y border-border bg-background sm:rounded-3xl sm:border"
-        />
+        {/* key: al cambiar de profesional se monta un iframe nuevo (y su carga) en vez de reutilizar el historial. */}
+        <BookingFrame key={src} src={src} title={frameTitle} />
       </div>
     </div>
   );

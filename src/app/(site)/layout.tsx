@@ -6,6 +6,7 @@ import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
 import { Footer } from "@/components/layout/Footer";
 import { HashlessSectionLinks } from "@/components/layout/HashlessSectionLinks";
 import { Header } from "@/components/layout/Header";
+import { TouchActiveStates } from "@/components/layout/TouchActiveStates";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 /**
@@ -41,6 +42,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
         Saltar al contenido
       </a>
       <HashlessSectionLinks />
+      <TouchActiveStates />
       <Header
         name={site.name}
         logo={site.branding.logo}
