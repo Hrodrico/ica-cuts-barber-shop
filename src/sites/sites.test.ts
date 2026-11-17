@@ -42,6 +42,9 @@ describe.each(Object.entries(sites))("sitio %s", (_, { config, content }) => {
       ["accentForeground", "accent"],
       ["accentText", "background"],
       ["accentText", "surface"],
+      // Texto sobre surface: secciones alternas y footer con branding.footer "surface".
+      ["foreground", "surface"],
+      ["muted", "surface"],
     ] as const)("contraste %s sobre %s >= 4.5 (WCAG AA)", (text, bg) => {
       expect(contrast(config.theme[text], config.theme[bg])).toBeGreaterThanOrEqual(4.5);
       if (config.themeDark) {

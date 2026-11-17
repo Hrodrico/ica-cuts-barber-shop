@@ -41,6 +41,8 @@ export const config: SiteConfig = {
   branding: {
     // Vectorizado del logo de AgendaPro (200 px); reemplazar si el dueño entrega el original.
     logo: "/logos/logo-icacuts.svg",
+    // El dorado es el color de las acciones: el footer va en surface para no usarlo en un bloque de texto.
+    footer: "surface",
   },
   // Negro y dorado, como el afiche del local.
   theme: {

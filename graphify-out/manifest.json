@@ -60,9 +60,9 @@
     "semantic_hash": "3b8e7703219bc1ecbb73ef04e4609148"
   },
   "src/app/(site)/layout.tsx": {
-    "mtime": 1794947807.4901118,
-    "seen": 1794947917.858054,
-    "ast_hash": "f676ed44ba02acd6cd9d4eb951f48343",
+    "mtime": 1794949492.0285397,
+    "seen": 1794949545.0364459,
+    "ast_hash": "7fa5170519c06e057a5d471bc099239e",
     "semantic_hash": ""
   },
   "src/app/(site)/page.tsx": {
@@ -114,9 +114,9 @@
     "semantic_hash": "b75b7007fc7cced7b892979bf07743f8"
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1794947799.096402,
-    "seen": 1794947917.8580658,
-    "ast_hash": "87d346515710e9eebd3b6d6b16d4c6eb",
+    "mtime": 1794949448.3931527,
+    "seen": 1794949545.036459,
+    "ast_hash": "6fb519e4fdcd9bdd5a1ae4f00ba32e21",
     "semantic_hash": ""
   },
   "src/components/layout/Header.tsx": {
@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "src/components/ui/SocialLinks.tsx": {
-    "mtime": 1794947799.096651,
-    "seen": 1794947917.858098,
-    "ast_hash": "665a4c7088fe45dd5eeab9c59db3af78",
+    "mtime": 1794949461.646066,
+    "seen": 1794949545.036489,
+    "ast_hash": "7827369175e1b91bddd08db27cb81014",
     "semantic_hash": ""
   },
   "src/components/ui/WhatsAppButton.tsx": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "src/sites/barbershop/config.ts": {
-    "mtime": 1794933948.8931055,
-    "seen": 1794934091.2956622,
-    "ast_hash": "de4b790c685ba7ef255faa771d49ac23",
+    "mtime": 1794949461.646713,
+    "seen": 1794949545.03651,
+    "ast_hash": "1b4defe3d173b2b2066c9face5e1d141",
     "semantic_hash": ""
   },
   "src/sites/barbershop/content.ts": {
@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "src/sites/sites.test.ts": {
-    "mtime": 1794933960.7642565,
-    "seen": 1794934091.295664,
-    "ast_hash": "92769020c6e2c8e22ef72ad0ffd42e90",
+    "mtime": 1794949476.6986938,
+    "seen": 1794949545.036513,
+    "ast_hash": "6b499f5ccd12e504c507b2eb0c4ce4de",
     "semantic_hash": ""
   },
   "src/types/content.ts": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "src/types/site.ts": {
-    "mtime": 1794933869.6038294,
-    "seen": 1794934091.295666,
-    "ast_hash": "b1cb77b6ee1352baa94116dea6aec4ac",
+    "mtime": 1794949438.0161989,
+    "seen": 1794949545.036515,
+    "ast_hash": "5f0f3d4e7a1b76260b126baaf5670c88",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -384,9 +384,9 @@
     "semantic_hash": "c98dbebb744eadc1acc4b9f58bfe0f42"
   },
   "CLAUDE.md": {
-    "mtime": 1794934071.0171144,
-    "seen": 1794934091.295671,
-    "ast_hash": "4a7e2633905e98877dfdb3bdfbfa95d7",
+    "mtime": 1794949540.6027584,
+    "seen": 1794949545.03652,
+    "ast_hash": "7d66f20ca2dcaeccd9799ad3ad82ae04",
     "semantic_hash": ""
   },
   "README.md": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1794947882.78676,
-    "seen": 1794947917.858102,
+    "mtime": 1794949498.562945,
+    "seen": 1794949545.036493,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
@@ -615,6 +615,12 @@
     "mtime": 1794947818.0993192,
     "seen": 1794947917.8580759,
     "ast_hash": "0eaae8f73c3fccb99cb22c2408c39914",
+    "semantic_hash": ""
+  },
+  "src/components/layout/Footer.test.tsx": {
+    "mtime": 1794949476.201545,
+    "seen": 1794949545.036458,
+    "ast_hash": "1d3d6164811d9949532b3058e23e192c",
     "semantic_hash": ""
   },
   "package-lock.json": {
