@@ -96,6 +96,12 @@ export type SiteConfig = {
     logo?: string;
     /** Versión del logo para modo oscuro (ruta en /public). Sin valor, se usa `logo` en ambos modos. */
     logoDark?: string;
+    /**
+     * Fondo del footer. "primary" (por defecto) es un bloque del color de marca: va bien con
+     * temas claros. "surface" es neutro: úsalo cuando el primary es el color de las acciones
+     * sobre un tema oscuro (ej: dorado sobre negro), para no usarlo en un bloque de texto.
+     */
+    footer?: "primary" | "surface";
   };
   theme: ThemeColors;
   /**

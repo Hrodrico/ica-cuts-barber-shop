@@ -1,9 +1,9 @@
 import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
 import { bookingEmbedId, bookingHref } from "@/lib/booking";
-import { whatsappUrl } from "@/lib/contact";
+import { emailUrl, phoneUrl, whatsappUrl } from "@/lib/contact";
 import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
-import { Footer } from "@/components/layout/Footer";
+import { Footer, type FooterContactLine } from "@/components/layout/Footer";
 import { HashlessSectionLinks } from "@/components/layout/HashlessSectionLinks";
 import { Header } from "@/components/layout/Header";
 import { TouchActiveStates } from "@/components/layout/TouchActiveStates";
@@ -21,10 +21,13 @@ async function getCurrentYear() {
 
 export default async function SiteLayout({ children }: LayoutProps<"/">) {
   const navigation = buildNavigation(site);
-  const { phone, email, address, city, whatsapp } = site.contact;
-  const contactLines = [email, phone, [address, city].filter(Boolean).join(", ")].filter(
-    (line): line is string => Boolean(line),
-  );
+  const { phone, email, address, city, mapUrl, whatsapp } = site.contact;
+  const location = [address, city].filter(Boolean).join(", ");
+  // Tocables: en el teléfono, llamar, escribir o abrir el mapa sin copiar el texto.
+  const contactLines: FooterContactLine[] = [];
+  if (email) contactLines.push({ label: email, href: emailUrl(email) });
+  if (phone) contactLines.push({ label: phone, href: phoneUrl(phone) });
+  if (location) contactLines.push({ label: location, href: mapUrl, external: Boolean(mapUrl) });
   // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
   const { booking } = site.contact;
   const cta = booking
@@ -61,6 +64,8 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
         social={site.social}
         contactLines={contactLines}
         year={await getCurrentYear()}
+        variant={site.branding.footer}
+        floatingButtonSpace={Boolean(whatsapp)}
       />
       {whatsapp && (
         <WhatsAppButton

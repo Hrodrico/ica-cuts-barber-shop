@@ -1,17 +1,17 @@
 # Graph Report - ica-cuts-barber-shop  (2026-11-17)
 
 ## Corpus Check
-- 98 files · ~41,405 words
+- 99 files · ~41,983 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 4, .example 1, .css 1)
 
 ## Summary
-- 486 nodes · 1037 edges · 27 communities (16 shown, 11 thin omitted)
+- 491 nodes · 1050 edges · 28 communities (20 shown, 8 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 34 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8aa14e86`
+- Built from commit: `9a5afd2c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,7 +23,7 @@
 - Arquitectura y reglas (docs)
 - generate-image-placeholders.mjs
 - Layout raíz, navegación y tema
-- next
+- (site)/layout.tsx
 - Config de TypeScript
 - vitest
 - Scripts npm
@@ -37,20 +37,21 @@
 - next
 - ImageCarousel.test.tsx
 - trabajos/[slug]/page.tsx
-- next.config.ts
-- @vitejs/plugin-react
-- navigation.ts
+- package.json
+- Footer.tsx
+- types/site.ts
+- dependencies
 
 ## God Nodes (most connected - your core abstractions)
-1. `next` - 25 edges
-2. `vitest` - 25 edges
+1. `vitest` - 26 edges
+2. `next` - 25 edges
 3. `react` - 22 edges
 4. `Container()` - 21 edges
 5. `ContactSection()` - 17 edges
 6. `compilerOptions` - 16 edges
-7. `@testing-library/react` - 15 edges
+7. `@testing-library/react` - 16 edges
 8. `ButtonLink()` - 13 edges
-9. `ThemeToggle()` - 12 edges
+9. `SiteLayout()` - 12 edges
 10. `HomePage()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -58,11 +59,11 @@
   .claude/CLAUDE.md → CLAUDE.md
 - `How to grow a project (outside base)` --semantically_similar_to--> `Scaling a clone (demos removal, sections, pages, login, DB/CMS, forms, e-commerce, remote images)`  [INFERRED] [semantically similar]
   README.md → CLAUDE.md
-- `renderSection()` --calls--> `ProjectsSection()`  [EXTRACTED]
-  src/components/sections/ProjectsSection.test.tsx → src/components/sections/ProjectsSection.tsx
 - `Tests (README)` --semantically_similar_to--> `Colocated unit tests (Vitest + Testing Library)`  [INFERRED] [semantically similar]
   README.md → CLAUDE.md
 - `Continuous integration and ruleset setup` --semantically_similar_to--> `CI workflow (.github/workflows/ci.yml)`  [INFERRED] [semantically similar]
+  README.md → CLAUDE.md
+- `Pre-publish checklist` --semantically_similar_to--> `Minimum quality (a11y, mobile-first, next/image Media, SEO, real content)`  [INFERRED] [semantically similar]
   README.md → CLAUDE.md
 
 ## Import Cycles
@@ -73,23 +74,23 @@
 - **Next.js 16 project particularities** — claude_cache_components, claude_generate_static_params, claude_global_route_types, claude_per_user_data, claude_server_components_default, claude_proxy_ts [INFERRED 0.85]
 - **Testing and CI quality gate** — claude_unit_tests_colocated, claude_e2e_playwright, claude_sites_test, claude_ci_workflow, claude_main_branch_protection, claude_verification_workflow [INFERRED 0.85]
 
-## Communities (27 total, 11 thin omitted)
+## Communities (28 total, 8 thin omitted)
 
 ### Community 0 - "Páginas y metadatos SEO"
 Cohesion: 0.09
-Nodes (41): NotFound(), HomePage(), metadata, Container(), Props, Header(), AboutSection(), Props (+33 more)
+Nodes (39): NotFound(), HomePage(), metadata, Container(), Props, AboutSection(), Props, HeroSection() (+31 more)
 
 ### Community 1 - "devDependencies"
-Cohesion: 0.10
-Nodes (27): react-dom@19.3.0, devDependencies, jsdom@^30.1.3, @playwright/test@^1.64.1, sharp@^0.35.5, tailwindcss@^4, @tailwindcss/turbopack@^4, @testing-library/dom@^10.4.2 (+19 more)
+Cohesion: 0.12
+Nodes (16): devDependencies, @playwright/test@^1.64.1, sharp@^0.35.5, @testing-library/dom@^10.4.2, @testing-library/user-event@^14.6.8, @types/node@^24.19.2, @types/react@^19, @types/react-dom@^19 (+8 more)
 
 ### Community 2 - "Workflow de CI"
 Cohesion: 0.05
 Nodes (44): if, name, needs, runs-on, steps, timeout-minutes, concurrency, cancel-in-progress (+36 more)
 
 ### Community 3 - "icons.tsx"
-Cohesion: 0.09
-Nodes (31): BreadcrumbItem, Breadcrumbs(), Props, base, ChevronLeftIcon(), ChevronRightIcon(), CloseIcon(), ExpandIcon() (+23 more)
+Cohesion: 0.11
+Nodes (29): base, ChevronLeftIcon(), ChevronRightIcon(), CloseIcon(), ExpandIcon(), IconProps, PauseIcon(), PlayIcon() (+21 more)
 
 ### Community 4 - "Arquitectura y reglas (docs)"
 Cohesion: 0.06
@@ -101,19 +102,19 @@ Nodes (9): files, imagesDir, listImages(), output, placeholders, root, sites, co
 
 ### Community 6 - "Layout raíz, navegación y tema"
 Cohesion: 0.09
-Nodes (28): geistSans, metadata, RootLayout(), MoonIcon(), socialIcons, socialNames, SunIcon(), Props (+20 more)
+Nodes (28): react, geistSans, metadata, RootLayout(), Header(), Props, MobileMenu(), Props (+20 more)
 
-### Community 7 - "next"
-Cohesion: 0.09
-Nodes (28): dependencies, next@16.4.6, react@19.3.0, next, react, getCurrentYear(), SiteLayout(), Footer() (+20 more)
+### Community 7 - "(site)/layout.tsx"
+Cohesion: 0.15
+Nodes (23): next, getCurrentYear(), SiteLayout(), HashlessSectionLinks(), renderPage(), TouchActiveStates(), ContactSection(), Item() (+15 more)
 
 ### Community 8 - "Config de TypeScript"
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 9 - "vitest"
-Cohesion: 0.15
-Nodes (11): @testing-library/jest-dom@^7.0.1, @testing-library/react@^16.3.3, vitest@^5.0.5, @testing-library/jest-dom, @testing-library/react, vitest, project, projects (+3 more)
+Cohesion: 0.25
+Nodes (5): @vitejs/plugin-react@^6.1.2, vitest@^5.0.5, @vitejs/plugin-react, vitest, images
 
 ### Community 10 - "Scripts npm"
 Cohesion: 0.18
@@ -129,35 +130,51 @@ Nodes (4): src/sites/sites.test.ts content validation, Theme flow (config.theme 
 
 ### Community 19 - "next"
 Cohesion: 0.11
-Nodes (26): BookingPage(), BookingShell(), embeddedBooking, Props, metadata, ReservePage(), BookingSkeleton(), generateMetadata() (+18 more)
+Nodes (27): BookingPage(), BookingShell(), embeddedBooking, Props, metadata, ReservePage(), BookingSkeleton(), generateMetadata() (+19 more)
+
+### Community 20 - "ImageCarousel.test.tsx"
+Cohesion: 0.18
+Nodes (5): @testing-library/jest-dom@^7.0.1, @testing-library/react@^16.3.3, @testing-library/jest-dom, @testing-library/react, images
 
 ### Community 21 - "trabajos/[slug]/page.tsx"
-Cohesion: 0.08
-Nodes (34): metadata, ProjectsPage(), generateMetadata(), generateStaticParams(), Params, parentCrumbs, ProjectDetail(), ProjectPage() (+26 more)
+Cohesion: 0.11
+Nodes (22): metadata, ProjectsPage(), generateMetadata(), generateStaticParams(), Params, parentCrumbs, ProjectDetail(), ProjectPage() (+14 more)
 
-### Community 22 - "next.config.ts"
-Cohesion: 0.50
-Nodes (3): nextConfig, engines, node
+### Community 22 - "package.json"
+Cohesion: 0.15
+Nodes (12): nextConfig, jsdom@^30.1.3, tailwindcss@^4, @tailwindcss/turbopack@^4, engines, node, name, private (+4 more)
+
+### Community 23 - "Footer.tsx"
+Cohesion: 0.18
+Nodes (11): Footer(), FooterContactLine, Props, props, Variant, variants, socialIcons, socialNames (+3 more)
+
+### Community 24 - "types/site.ts"
+Cohesion: 0.11
+Nodes (15): @playwright/test, optional(), withPlaceholder(), withPlaceholders(), heroId, sectionIds, labels, config (+7 more)
+
+### Community 25 - "dependencies"
+Cohesion: 0.40
+Nodes (5): dependencies, next@16.4.6, react@19.3.0, react-dom@19.3.0, react-dom
 
 ## Knowledge Gaps
 - **17 isolated node(s):** `{ config, content }`, `Theme flow (config.theme -> themeToCssVars -> --brand-* -> globals.css @theme inline)`, `Colocated unit tests (Vitest + Testing Library)`, `graphify skill (project)`, `graphify usage rules (query before grep, update after edits)` (+12 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 168 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 171 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `next` to `Páginas y metadatos SEO`, `devDependencies`, `icons.tsx`, `Layout raíz, navegación y tema`, `next`, `trabajos/[slug]/page.tsx`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+- **Why does `react` connect `Layout raíz, navegación y tema` to `Páginas y metadatos SEO`, `icons.tsx`, `(site)/layout.tsx`, `next`, `trabajos/[slug]/page.tsx`, `package.json`, `dependencies`?**
+  _High betweenness centrality (0.105) - this node is a cross-community bridge._
 - **What connects `{ config, content }`, `Theme flow (config.theme -> themeToCssVars -> --brand-* -> globals.css @theme inline)`, `Colocated unit tests (Vitest + Testing Library)` to the rest of the system?**
   _17 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Páginas y metadatos SEO` be split into smaller, more focused modules?**
-  _Cohesion score 0.08961038961038961 - nodes in this community are weakly interconnected._
-- **Why does `next` connect `next` to `Páginas y metadatos SEO`, `devDependencies`, `icons.tsx`, `Layout raíz, navegación y tema`, `next`, `trabajos/[slug]/page.tsx`, `next.config.ts`?**
-  _High betweenness centrality (0.099) - this node is a cross-community bridge._
+  _Cohesion score 0.09285714285714286 - nodes in this community are weakly interconnected._
+- **Why does `next` connect `(site)/layout.tsx` to `Páginas y metadatos SEO`, `icons.tsx`, `Layout raíz, navegación y tema`, `next`, `trabajos/[slug]/page.tsx`, `package.json`, `Footer.tsx`, `dependencies`?**
+  _High betweenness centrality (0.101) - this node is a cross-community bridge._
 - **Should `devDependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.09788359788359788 - nodes in this community are weakly interconnected._
-- **Why does `vitest` connect `vitest` to `Páginas y metadatos SEO`, `devDependencies`, `icons.tsx`, `generate-image-placeholders.mjs`, `Layout raíz, navegación y tema`, `next`, `next`, `ImageCarousel.test.tsx`, `trabajos/[slug]/page.tsx`, `@vitejs/plugin-react`?**
-  _High betweenness centrality (0.087) - this node is a cross-community bridge._
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Why does `vitest` connect `vitest` to `Páginas y metadatos SEO`, `icons.tsx`, `generate-image-placeholders.mjs`, `Layout raíz, navegación y tema`, `(site)/layout.tsx`, `next`, `ImageCarousel.test.tsx`, `trabajos/[slug]/page.tsx`, `package.json`, `Footer.tsx`, `types/site.ts`?**
+  _High betweenness centrality (0.088) - this node is a cross-community bridge._
 - **Should `Workflow de CI` be split into smaller, more focused modules?**
   _Cohesion score 0.049494949494949494 - nodes in this community are weakly interconnected._
