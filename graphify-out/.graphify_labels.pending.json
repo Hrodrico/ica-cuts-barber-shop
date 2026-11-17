@@ -1,11 +1,15 @@
 {
+  "1": "devDependencies",
   "3": "icons.tsx",
   "5": "index.ts",
   "7": "next",
-  "19": "[slug]/page.tsx",
-  "20": "ContactSection.tsx",
-  "21": "useSwipeTrack.ts",
+  "9": "vitest",
+  "11": "eslint.config.mjs",
+  "19": "next",
+  "20": "ImageCarousel.test.tsx",
+  "21": "next.config.ts",
   "22": "package.json",
+  "23": "@vitejs/plugin-react",
   "26": ".close",
   "27": ".showModal"
 }

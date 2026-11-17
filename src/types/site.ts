@@ -17,6 +17,14 @@ export type SocialLink = {
   url: string;
 };
 
+export type BookingProfessional = {
+  /** Parte de la URL pública /reservar/<slug>, ej: "alonso-santana". */
+  slug: string;
+  name: string;
+  /** Agenda de este profesional en el proveedor. */
+  url: string;
+};
+
 export type ContactInfo = {
   /** Formato internacional, ej: "+56 9 1234 5678". */
   phone?: string;
@@ -32,9 +40,19 @@ export type ContactInfo = {
    * sección de contacto llevan a ella; la agenda envía las confirmaciones por correo.
    */
   booking?: {
+    /** Página de reservas del negocio (o de la sucursal). */
     url: string;
-    /** Texto del botón, ej: "Agenda tu hora". */
+    /** Texto del botón y título de la página de reservas, ej: "Agenda tu hora". */
     label: string;
+    /**
+     * Muestra la agenda dentro del sitio, en /reservar (iframe), en vez de abrirla en otra
+     * pestaña. Solo si el proveedor permite embeberla (sin X-Frame-Options ni frame-ancestors).
+     */
+    embed?: boolean;
+    /** Bajada de la página de reservas. */
+    description?: string;
+    /** Profesionales con agenda propia: cada uno tiene su página /reservar/<slug>. */
+    professionals?: BookingProfessional[];
   };
   address?: string;
   city?: string;

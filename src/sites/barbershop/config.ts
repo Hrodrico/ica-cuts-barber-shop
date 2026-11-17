@@ -16,9 +16,20 @@ export const config: SiteConfig = {
       number: "+56 9 7841 3652",
       message: "¡Hola! Vi su sitio web y quiero agendar una hora.",
     },
+    // AgendaPro permite embeberse (sin X-Frame-Options); ids tomados de su página pública.
     booking: {
       url: "https://icacuts.site.agendapro.com/cl/sucursal/28448",
       label: "Agenda tu hora",
+      embed: true,
+      description:
+        "Elige servicio, barbero y horario. Te llegará la confirmación por correo.",
+      professionals: [
+        { slug: "alonso-santana", name: "Alonso Santana", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/99987" },
+        { slug: "gael", name: "Gael", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/432441" },
+        { slug: "vito", name: "Vito", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/579216" },
+        { slug: "jotta", name: "Jotta", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/331377" },
+        { slug: "juanca", name: "Juanca", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/280184" },
+      ],
     },
     address: "Parque Central Poniente 149",
     city: "Maipú, Santiago",

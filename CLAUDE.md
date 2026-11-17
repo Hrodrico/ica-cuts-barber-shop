@@ -21,9 +21,9 @@ Este repositorio (`ica-cuts-barber-shop`) es el **clon de cliente** de Ica Cuts,
 
 - **Un solo negocio:** `src/sites/barbershop/`. El id `barbershop` se mantiene a propósito para que portar cambios desde la base o hacia ella sea fácil; no lo renombres. Ya es `DEFAULT_SITE`, así que `SITE_ID` no hace falta, y la matriz del CI solo tiene `[barbershop]`.
 - **Datos reales:** contacto, horario, servicios con precio y duración, y reseñas sacadas de AgendaPro. No los reemplaces por datos de ejemplo.
-- **Reservas externas:** los botones "Agenda tu hora" (header, hero y contacto) llevan a `contact.booking.url` (AgendaPro), que también envía las confirmaciones. No hay agenda propia.
+- **Reservas embebidas (AgendaPro):** con `contact.booking.embed`, los botones "Agenda tu hora" (header, hero y contacto) llevan a `/reservar`, que muestra AgendaPro en un iframe (`BookingEmbed`). Cada barbero de `booking.professionals` tiene su página `/reservar/<slug>`, que carga su URL `/profesional/<id>`. `bookingHref()` (`lib/booking.ts`) decide el destino. AgendaPro sigue siendo la agenda real y envía las confirmaciones. Los ids de sucursal y profesionales salen de su página pública (`__NEXT_DATA__`). Con Cache Components, la página anterior queda oculta con `<Activity>` (no se desmonta), así que en el DOM puede haber más de un iframe: los E2E usan `iframe:visible`.
 - **Trabajos desactivado:** la sección `projects` (`/trabajos`) está apagada en `config.sections` hasta que haya fotos reales. La foto del hero es provisional.
-- **Candidatos a portar a la base:** `Service.price`/`duration` (`types/content.ts`) y `ContactInfo.booking` (`types/site.ts`) son genéricos y opcionales.
+- **Candidatos a portar a la base:** `Service.price`/`duration` (`types/content.ts`), `ContactInfo.booking` con `embed` y `professionals` (`types/site.ts`), `lib/booking.ts`, `BookingEmbed` y las rutas `/reservar`. Todos son genéricos y opcionales.
 - **Marca:** logo vectorizado en `public/logos/logo-icacuts.svg`; `src/app/icon.png`, `apple-icon.png` y `public/og-image.png` son propios del cliente.
 - El `README.md` todavía describe la base (por ejemplo, dice que construcción es el sitio por defecto). Si chocan, manda este archivo.
 

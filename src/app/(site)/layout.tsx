@@ -1,5 +1,6 @@
 import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
+import { bookingHref } from "@/lib/booking";
 import { whatsappUrl } from "@/lib/contact";
 import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
 import { Footer } from "@/components/layout/Footer";
@@ -26,7 +27,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
   // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
   const { booking } = site.contact;
   const cta = booking
-    ? { label: booking.label, href: booking.url }
+    ? { label: booking.label, href: bookingHref(booking) }
     : site.sections.contact
       ? { label: site.actions?.quote ?? site.labels.contact, href: `/#${sectionIds.contact}` }
       : undefined;

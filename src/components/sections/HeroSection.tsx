@@ -1,5 +1,6 @@
 import type { HeroContent } from "@/types/content";
 import { Container } from "@/components/layout/Container";
+import { isExternalHref } from "@/lib/booking";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ImageCarousel } from "@/components/ui/ImageCarousel";
 import { Media } from "@/components/ui/Media";
@@ -9,8 +10,6 @@ type Props = {
   content: HeroContent;
   fallbackLabel: string;
 };
-
-const isExternal = (href: string) => /^https?:\/\//.test(href);
 
 export function HeroSection({ id, content, fallbackLabel }: Props) {
   const { eyebrow, title, description, images, primaryCta, secondaryCta } = content;
@@ -29,9 +28,9 @@ export function HeroSection({ id, content, fallbackLabel }: Props) {
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted">{description}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={primaryCta.href} external={isExternal(primaryCta.href)}>{primaryCta.label}</ButtonLink>
+            <ButtonLink href={primaryCta.href} external={isExternalHref(primaryCta.href)}>{primaryCta.label}</ButtonLink>
             {secondaryCta && (
-              <ButtonLink href={secondaryCta.href} external={isExternal(secondaryCta.href)} variant="outline">
+              <ButtonLink href={secondaryCta.href} external={isExternalHref(secondaryCta.href)} variant="outline">
                 {secondaryCta.label}
               </ButtonLink>
             )}

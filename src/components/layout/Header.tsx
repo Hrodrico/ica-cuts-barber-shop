@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { isExternalHref } from "@/lib/booking";
 import type { NavItem } from "@/lib/navigation";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -77,7 +78,7 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
           {/* La visibilidad va en el contenedor: el inline-flex de ButtonLink le gana a "hidden". */}
           {cta && (
             <div className="hidden lg:block">
-              <ButtonLink href={cta.href} external={/^https?:\/\//.test(cta.href)} className="px-5 py-2">
+              <ButtonLink href={cta.href} external={isExternalHref(cta.href)} className="px-5 py-2">
                 {cta.label}
               </ButtonLink>
             </div>
