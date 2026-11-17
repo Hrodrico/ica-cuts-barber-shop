@@ -15,6 +15,18 @@ Antes de cambiar algo, identifica en cuál de los dos contextos estás:
 - **Base** (`business-web-starter`): solo cambios genéricos que sirvan a cualquier rubro. Nada específico de un cliente en componentes, `lib/` ni `types/`. Los negocios de `src/sites/` son demos para validar la base.
 - **Clon de cliente** (ej: `noua-construccion-web`): se puede extender libremente (login, base de datos, nuevas rutas), pero respetando la arquitectura de abajo para que el proyecto siga siendo mantenible.
 
+### Este repo: clon de IcaCuts
+
+Este repositorio (`ica-cuts-barber-shop`) es el **clon de cliente** de Ica Cuts, una barbería en Maipú. Lo que cambia respecto de la base:
+
+- **Un solo negocio:** `src/sites/barbershop/`. El id `barbershop` se mantiene a propósito para que portar cambios desde la base o hacia ella sea fácil; no lo renombres. Ya es `DEFAULT_SITE`, así que `SITE_ID` no hace falta, y la matriz del CI solo tiene `[barbershop]`.
+- **Datos reales:** contacto, horario, servicios con precio y duración, y reseñas sacadas de AgendaPro. No los reemplaces por datos de ejemplo.
+- **Reservas externas:** los botones "Agenda tu hora" (header, hero y contacto) llevan a `contact.booking.url` (AgendaPro), que también envía las confirmaciones. No hay agenda propia.
+- **Trabajos desactivado:** la sección `projects` (`/trabajos`) está apagada en `config.sections` hasta que haya fotos reales. La foto del hero es provisional.
+- **Candidatos a portar a la base:** `Service.price`/`duration` (`types/content.ts`) y `ContactInfo.booking` (`types/site.ts`) son genéricos y opcionales.
+- **Marca:** logo vectorizado en `public/logos/logo-icacuts.svg`; `src/app/icon.png`, `apple-icon.png` y `public/og-image.png` son propios del cliente.
+- El `README.md` todavía describe la base (por ejemplo, dice que construcción es el sitio por defecto). Si chocan, manda este archivo.
+
 ## Stack y comandos
 
 Next.js 16 (App Router, `cacheComponents` + `partialPrefetching`), React 19, TypeScript estricto, Tailwind CSS 4, despliegue en Vercel. **Node 24 LTS obligatorio** (`nvm use`).
@@ -25,8 +37,8 @@ Next.js 16 (App Router, `cacheComponents` + `partialPrefetching`), React 19, Typ
 - **ESLint 10:** `npm install` muestra 3 avisos `ERESOLVE overriding peer dependency` porque `eslint-plugin-react`, `eslint-plugin-jsx-a11y` y `eslint-plugin-import` aún no declaran ESLint 10. Son esperados: sus reglas se verificaron y funcionan. Desaparecen cuando esos plugins actualicen su rango.
 
 ```bash
-npm run dev                      # sitio por defecto
-SITE_ID=barbershop npm run dev   # otro negocio de src/sites
+npm run dev                      # sitio por defecto (en este clon, barbershop)
+SITE_ID=<id> npm run dev         # otro negocio de src/sites (solo en la base)
 npm run lint
 npm test                         # unitarios (Vitest)
 npx vitest run src/lib/contact.test.ts   # un solo archivo (o: npx vitest run -t "nombre del test")
