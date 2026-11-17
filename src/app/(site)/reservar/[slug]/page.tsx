@@ -53,7 +53,7 @@ async function ProfessionalBooking({ params }: { params: PageProps<"/reservar/[s
 function BookingSkeleton() {
   return (
     <BookingShell title={embeddedBooking?.label ?? ""} description={embeddedBooking?.description}>
-      <div aria-busy="true" className="h-[75dvh] min-h-[560px] animate-pulse rounded-3xl bg-surface motion-reduce:animate-none">
+      <div aria-busy="true" className="-mx-4 flex-1 animate-pulse bg-surface motion-reduce:animate-none sm:mx-0 sm:rounded-3xl">
         <span className="sr-only">Cargando agenda…</span>
       </div>
     </BookingShell>

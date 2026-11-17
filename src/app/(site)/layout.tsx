@@ -1,6 +1,6 @@
 import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
-import { bookingHref } from "@/lib/booking";
+import { bookingEmbedId, bookingHref } from "@/lib/booking";
 import { whatsappUrl } from "@/lib/contact";
 import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
 import { Footer } from "@/components/layout/Footer";
@@ -65,7 +65,12 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
           href={whatsappUrl(whatsapp)}
           // El hero tiene sus propios botones (en móvil el flotante tapaba los del carrusel) y
           // la sección de contacto ya muestra WhatsApp: el botón se oculta mientras se vean.
-          hideWhenVisible={site.sections.contact ? [heroId, sectionIds.contact] : [heroId]}
+          // En /reservar taparía los botones de la agenda.
+          hideWhenVisible={[
+            heroId,
+            ...(site.sections.contact ? [sectionIds.contact] : []),
+            ...(booking?.embed ? [bookingEmbedId] : []),
+          ]}
         />
       )}
     </>

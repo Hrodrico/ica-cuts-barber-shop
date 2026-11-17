@@ -7,9 +7,12 @@
   "11": "eslint.config.mjs",
   "19": "next",
   "20": "ImageCarousel.test.tsx",
-  "21": "next.config.ts",
+  "21": "trabajos/[slug]/page.tsx",
   "22": "package.json",
-  "23": "@vitejs/plugin-react",
+  "23": "Header.tsx",
+  "24": "navigation.ts",
+  "25": "dependencies",
   "26": ".close",
-  "27": ".showModal"
+  "27": ".showModal",
+  "28": "Rating.tsx"
 }

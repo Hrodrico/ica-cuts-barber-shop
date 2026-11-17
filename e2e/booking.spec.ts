@@ -20,6 +20,23 @@ test.describe("agenda embebida", () => {
     await expect(page.getByRole("link", { name: /pestaña nueva/ })).toHaveAttribute("href", booking!.url);
   });
 
+  // La agenda tiene su propio scroll: si no cabe en pantalla, en móvil el dedo queda atrapado
+  // en ella y no se alcanza su parte inferior.
+  test("la agenda cabe completa en la pantalla", async ({ page }) => {
+    await page.goto("/reservar");
+    const frame = await page.locator("iframe:visible").boundingBox();
+    const viewport = page.viewportSize()!;
+    expect(frame).not.toBeNull();
+    expect(frame!.y + frame!.height).toBeLessThanOrEqual(viewport.height + 1);
+    expect(frame!.height).toBeGreaterThan(viewport.height / 2);
+  });
+
+  test("el WhatsApp flotante no tapa la agenda", async ({ page }) => {
+    test.skip(!config.contact.whatsapp, "sin WhatsApp");
+    await page.goto("/reservar");
+    await expect(page.getByRole("link", { name: "Escribir por WhatsApp" })).toBeHidden();
+  });
+
   test("el botón del header lleva a /reservar", async ({ page, isMobile }) => {
     test.skip(isMobile, "en móvil el botón del header se oculta");
     await page.goto("/");

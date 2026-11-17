@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { CalendarIcon } from "@/components/ui/icons";
+import { BookingOptions } from "./BookingOptions";
 
 export type BookingOption = {
   label: string;
@@ -15,64 +14,44 @@ type Props = {
   options?: BookingOption[];
   /** href de la opción activa. */
   currentHref?: string;
+  /** id del contenedor del iframe (ej: para ocultar botones flotantes que lo taparían). */
+  id?: string;
 };
 
 /**
  * Agenda de un proveedor externo dentro del sitio. Un iframe de otro dominio no se puede
- * medir desde aquí, así que tiene alto fijo y su propio scroll. El enlace final cubre los
- * navegadores que bloquean sus cookies dentro del iframe (ej: Safari) y no lo dejan reservar.
+ * medir desde aquí, así que ocupa todo el alto que le da su contenedor (flex) y tiene su
+ * propio scroll. El enlace cubre los navegadores que bloquean sus cookies dentro del
+ * iframe (ej: Safari) y no lo dejan reservar; va arriba para verlo sin pasar por la agenda.
  */
-export function BookingEmbed({ src, frameTitle, options = [], currentHref }: Props) {
+export function BookingEmbed({ src, frameTitle, options = [], currentHref, id }: Props) {
   return (
-    <div>
-      {options.length > 1 && (
-        <nav aria-label="Elige profesional">
-          <ul className="flex flex-wrap gap-2">
-            {options.map((option) => {
-              const current = option.href === currentHref;
-              return (
-                <li key={option.href}>
-                  <Link
-                    href={option.href}
-                    aria-current={current ? "page" : undefined}
-                    className={`inline-flex rounded-full border px-4 py-2 text-sm font-medium transition ${
-                      current
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border hover:border-accent hover:text-accent-text"
-                    }`}
-                  >
-                    {option.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      )}
+    <div className="flex min-h-0 flex-1 flex-col">
+      {options.length > 1 && <BookingOptions options={options} currentHref={currentHref} />}
 
-      <iframe
-        // key: al cambiar de profesional se monta un iframe nuevo en vez de reutilizar el historial.
-        key={src}
-        src={src}
-        title={frameTitle}
-        allow="payment"
-        className="mt-6 block h-[75dvh] min-h-[560px] w-full rounded-3xl border border-border bg-background"
-      />
-
-      <p className="mt-4 flex items-center gap-2 text-sm text-muted">
-        <CalendarIcon className="h-4 w-4 shrink-0" />
-        <span>
-          ¿No carga o no te deja reservar?{" "}
-          <a
-            href={src}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-accent-text underline underline-offset-2"
-          >
-            Abre la agenda en una pestaña nueva
-          </a>
-        </span>
+      <p className="mt-3 text-xs text-muted sm:text-sm">
+        ¿No carga o no te deja reservar?{" "}
+        <a
+          href={src}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-accent-text underline underline-offset-2"
+        >
+          Abre la agenda en una pestaña nueva
+        </a>
       </p>
+
+      {/* En móvil, de borde a borde: el ancho completo de la pantalla para la agenda. */}
+      <div id={id} className="-mx-4 mt-3 flex min-h-105 flex-1 sm:mx-0">
+        <iframe
+          // key: al cambiar de profesional se monta un iframe nuevo en vez de reutilizar el historial.
+          key={src}
+          src={src}
+          title={frameTitle}
+          allow="payment"
+          className="block w-full flex-1 border-y border-border bg-background sm:rounded-3xl sm:border"
+        />
+      </div>
     </div>
   );
 }

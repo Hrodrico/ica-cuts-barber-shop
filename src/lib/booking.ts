@@ -5,6 +5,9 @@ type Booking = NonNullable<ContactInfo["booking"]>;
 /** Ruta pública de la agenda embebida. */
 export const bookingPath = "/reservar";
 
+/** id del contenedor de la agenda embebida: el WhatsApp flotante se oculta mientras se ve. */
+export const bookingEmbedId = "agenda";
+
 export function professionalPath(slug: string): string {
   return `${bookingPath}/${slug}`;
 }

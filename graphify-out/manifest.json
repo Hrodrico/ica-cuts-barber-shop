@@ -60,9 +60,9 @@
     "semantic_hash": "3b8e7703219bc1ecbb73ef04e4609148"
   },
   "src/app/(site)/layout.tsx": {
-    "mtime": 1794933927.5660636,
-    "seen": 1794934091.295601,
-    "ast_hash": "a28a81f6d1f5ed7addea88ec80b073c1",
+    "mtime": 1794935386.2490757,
+    "seen": 1794935520.449108,
+    "ast_hash": "fbf10923b075881aa58dfb2fb24a9a80",
     "semantic_hash": ""
   },
   "src/app/(site)/page.tsx": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1794934082.5094328,
-    "seen": 1794934091.2956429,
+    "mtime": 1794935511.8353834,
+    "seen": 1794935520.449155,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
@@ -552,21 +552,21 @@
     "semantic_hash": ""
   },
   "e2e/booking.spec.ts": {
-    "mtime": 1794934018.2022083,
-    "seen": 1794934091.2955892,
-    "ast_hash": "85850765c4fa2810b983450f91312299",
+    "mtime": 1794935404.9616117,
+    "seen": 1794935520.449096,
+    "ast_hash": "049c3dcf14aa79974e1ff6e1a0ee92e5",
     "semantic_hash": ""
   },
   "src/app/(site)/reservar/[slug]/page.tsx": {
-    "mtime": 1794933913.3659558,
-    "seen": 1794934091.295603,
-    "ast_hash": "64af5d5b8a160a7a3b85cc81256176d6",
+    "mtime": 1794935392.5120623,
+    "seen": 1794935520.44911,
+    "ast_hash": "abd6a6efd2e3053c220de3fdb576c942",
     "semantic_hash": ""
   },
   "src/app/(site)/reservar/booking-page.tsx": {
-    "mtime": 1794933912.4195626,
-    "seen": 1794934091.295603,
-    "ast_hash": "38c35e0c3c0b0d0698ac3aa1abbcfcf6",
+    "mtime": 1794935392.50678,
+    "seen": 1794935520.449111,
+    "ast_hash": "434d6929a141f20cd3cb739b7adf6372",
     "semantic_hash": ""
   },
   "src/app/(site)/reservar/page.tsx": {
@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "src/components/sections/BookingEmbed.tsx": {
-    "mtime": 1794933890.5556536,
-    "seen": 1794934091.295619,
-    "ast_hash": "e5cece9396e9008ebcff880d520976ae",
+    "mtime": 1794935452.389711,
+    "seen": 1794935520.449128,
+    "ast_hash": "1683d8cf12b1f692b9d7e2310a64c4fa",
     "semantic_hash": ""
   },
   "src/lib/booking.test.ts": {
@@ -594,9 +594,15 @@
     "semantic_hash": ""
   },
   "src/lib/booking.ts": {
-    "mtime": 1794933870.6160142,
-    "seen": 1794934091.295645,
-    "ast_hash": "edf5372c083256fba5e400e8e352d6d7",
+    "mtime": 1794935384.2008667,
+    "seen": 1794935520.4491572,
+    "ast_hash": "34eb5fb0cf9776576736a28d7f2e0d1c",
+    "semantic_hash": ""
+  },
+  "src/components/sections/BookingOptions.tsx": {
+    "mtime": 1794935493.7719338,
+    "seen": 1794935520.4491289,
+    "ast_hash": "3d3dc1eb243296ec03097b2fcac9f3ac",
     "semantic_hash": ""
   },
   "package-lock.json": {
