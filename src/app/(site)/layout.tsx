@@ -1,10 +1,12 @@
 import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
+import { bookingEmbedId, bookingHref } from "@/lib/booking";
 import { whatsappUrl } from "@/lib/contact";
 import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
 import { Footer } from "@/components/layout/Footer";
 import { HashlessSectionLinks } from "@/components/layout/HashlessSectionLinks";
 import { Header } from "@/components/layout/Header";
+import { TouchActiveStates } from "@/components/layout/TouchActiveStates";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 /**
@@ -26,7 +28,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
   // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
   const { booking } = site.contact;
   const cta = booking
-    ? { label: booking.label, href: booking.url }
+    ? { label: booking.label, href: bookingHref(booking) }
     : site.sections.contact
       ? { label: site.actions?.quote ?? site.labels.contact, href: `/#${sectionIds.contact}` }
       : undefined;
@@ -40,6 +42,7 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
         Saltar al contenido
       </a>
       <HashlessSectionLinks />
+      <TouchActiveStates />
       <Header
         name={site.name}
         logo={site.branding.logo}
@@ -64,7 +67,12 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
           href={whatsappUrl(whatsapp)}
           // El hero tiene sus propios botones (en móvil el flotante tapaba los del carrusel) y
           // la sección de contacto ya muestra WhatsApp: el botón se oculta mientras se vean.
-          hideWhenVisible={site.sections.contact ? [heroId, sectionIds.contact] : [heroId]}
+          // En /reservar taparía los botones de la agenda.
+          hideWhenVisible={[
+            heroId,
+            ...(site.sections.contact ? [sectionIds.contact] : []),
+            ...(booking?.embed ? [bookingEmbedId] : []),
+          ]}
         />
       )}
     </>

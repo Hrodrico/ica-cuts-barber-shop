@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { isExternalHref } from "@/lib/booking";
 import type { NavItem } from "@/lib/navigation";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -23,8 +24,9 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
   // Antes de lg los enlaces no caben en una línea junto al logo y el botón.
   const desktopNavigation = cta ? navigation.filter((item) => item.href !== cta.href) : navigation;
 
+  // material-bar: borde solo con contenido debajo y opaco con "reducir transparencia" (globals.css).
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
+    <header className="material-bar sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
       {/* En lg, grid 1fr-auto-1fr: el menú queda centrado aunque el logo y las acciones midan distinto. */}
       <Container className="flex h-16 items-center justify-between gap-6 lg:grid lg:grid-cols-[1fr_auto_1fr]">
         <Link href="/" className="flex items-center gap-2 justify-self-start text-lg font-bold tracking-tight">
@@ -63,7 +65,7 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="rounded-full px-3 py-2 whitespace-nowrap text-foreground/80 transition hover:bg-accent/15 hover:text-accent-text"
+                  className="rounded-full px-3 py-2 whitespace-nowrap text-foreground/80 transition hover:bg-accent/15 hover:text-accent-text active:bg-accent/15 active:text-accent-text"
                 >
                   {item.label}
                 </Link>
@@ -77,7 +79,7 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
           {/* La visibilidad va en el contenedor: el inline-flex de ButtonLink le gana a "hidden". */}
           {cta && (
             <div className="hidden lg:block">
-              <ButtonLink href={cta.href} external={/^https?:\/\//.test(cta.href)} className="px-5 py-2">
+              <ButtonLink href={cta.href} external={isExternalHref(cta.href)} className="px-5 py-2">
                 {cta.label}
               </ButtonLink>
             </div>

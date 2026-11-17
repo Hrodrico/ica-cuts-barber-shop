@@ -55,6 +55,19 @@ describe.each(Object.entries(sites))("sitio %s", (_, { config, content }) => {
       }
     });
 
+    it("la agenda y sus profesionales usan URLs https y slugs únicos aptos para URL", () => {
+      const booking = config.contact.booking;
+      if (!booking) return;
+      expect(booking.url).toMatch(/^https:\/\//);
+      const professionals = booking.professionals ?? [];
+      for (const professional of professionals) {
+        expect(professional.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+        expect(professional.url, professional.slug).toMatch(/^https:\/\//);
+        expect(professional.name.trim(), professional.slug).not.toBe("");
+      }
+      expect(duplicates(professionals.map((professional) => professional.slug))).toEqual([]);
+    });
+
     it("no repite redes sociales", () => {
       expect(duplicates(config.social.map((link) => link.network))).toEqual([]);
     });

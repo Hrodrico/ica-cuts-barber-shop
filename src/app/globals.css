@@ -128,3 +128,81 @@ body {
     transform: scaleX(1);
   }
 }
+
+/*
+ * Barra traslúcida del header. Borde de scroll: arriba del todo no hay contenido debajo y el
+ * borde sobra; aparece (con una sombra suave) a medida que el contenido pasa bajo la barra.
+ * Sin soporte para animation-timeline queda el borde fijo de siempre.
+ */
+@supports (animation-timeline: scroll()) {
+  .material-bar {
+    animation: material-bar-edge linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 2rem;
+  }
+}
+
+@keyframes material-bar-edge {
+  from {
+    border-bottom-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+  }
+  to {
+    border-bottom-color: var(--color-border);
+    box-shadow: 0 8px 16px -12px rgb(0 0 0 / 0.35);
+  }
+}
+
+/* "Reducir transparencia" del sistema: la barra pasa a ser opaca y sin desenfoque. */
+@media (prefers-reduced-transparency: reduce) {
+  .material-bar {
+    background-color: var(--color-background);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/*
+ * Visor de la galería (ImageGallery): aparece y se va por el mismo camino (fundido y una
+ * escala mínima), en vez de cubrir la pantalla de golpe. Con "reducir movimiento", solo fundido.
+ */
+.gallery-dialog,
+.gallery-dialog::backdrop {
+  opacity: 0;
+  transition:
+    opacity 250ms ease-out,
+    scale 250ms ease-out,
+    display 250ms allow-discrete,
+    overlay 250ms allow-discrete;
+}
+
+.gallery-dialog {
+  scale: 0.97;
+}
+
+.gallery-dialog[open],
+.gallery-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+.gallery-dialog[open] {
+  scale: 1;
+}
+
+@starting-style {
+  .gallery-dialog[open],
+  .gallery-dialog[open]::backdrop {
+    opacity: 0;
+  }
+
+  .gallery-dialog[open] {
+    scale: 0.97;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-dialog,
+  .gallery-dialog[open] {
+    scale: 1;
+  }
+}

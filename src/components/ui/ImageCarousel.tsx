@@ -14,7 +14,10 @@ type Props = {
   sizes: string;
   /** Carga prioritaria de la primera imagen (solo si es la principal de la página). */
   priority?: boolean;
-  /** Milisegundos entre imágenes. */
+  /**
+   * Milisegundos entre imágenes. 7 s por defecto: un cambio cada 5 s (0.2 Hz) es el ritmo de
+   * oscilación lenta que conviene evitar en pantalla, según las guías de movimiento de Apple.
+   */
   interval?: number;
   className?: string;
 };
@@ -33,7 +36,7 @@ export function ImageCarousel({
   label,
   sizes,
   priority,
-  interval = 5000,
+  interval = 7000,
   className = "aspect-[4/3]",
 }: Props) {
   const [current, setCurrent] = useState(0);

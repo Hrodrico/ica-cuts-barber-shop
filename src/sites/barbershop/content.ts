@@ -1,7 +1,5 @@
 import type { SiteContent } from "@/types/content";
 
-const booking = "https://icacuts.site.agendapro.com/cl/sucursal/28448";
-
 export const content: SiteContent = {
   hero: {
     eyebrow: "Barbería en Maipú",
@@ -15,7 +13,8 @@ export const content: SiteContent = {
         alt: "Barbero cortando el pelo con tijera y peineta",
       },
     ],
-    primaryCta: { label: "Agenda tu hora", href: booking },
+    // La agenda (AgendaPro) se configura en config.contact.booking y se muestra en /reservar.
+    primaryCta: { label: "Agenda tu hora", href: "/reservar" },
     secondaryCta: { label: "Ver servicios", href: "/#servicios" },
   },
   about: {
