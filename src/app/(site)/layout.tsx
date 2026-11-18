@@ -21,13 +21,13 @@ async function getCurrentYear() {
 
 export default async function SiteLayout({ children }: LayoutProps<"/">) {
   const navigation = buildNavigation(site);
-  const { phone, email, address, city, mapUrl, whatsapp } = site.contact;
+  const { phone, email, address, city, whatsapp } = site.contact;
   const location = [address, city].filter(Boolean).join(", ");
-  // Correo y teléfono como texto (sin mailto:/tel:, a pedido del negocio); solo la dirección abre el mapa.
+  // Solo texto, a pedido del negocio: los enlaces (correo, teléfono, mapa) están en la sección de contacto.
   const contactLines: FooterContactLine[] = [];
   if (email) contactLines.push({ label: email });
   if (phone) contactLines.push({ label: phone });
-  if (location) contactLines.push({ label: location, href: mapUrl, external: Boolean(mapUrl) });
+  if (location) contactLines.push({ label: location });
   // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
   const { booking } = site.contact;
   const cta = booking

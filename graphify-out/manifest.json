@@ -60,9 +60,9 @@
     "semantic_hash": "3b8e7703219bc1ecbb73ef04e4609148"
   },
   "src/app/(site)/layout.tsx": {
-    "mtime": 1795007244.9790354,
-    "seen": 1795007277.736575,
-    "ast_hash": "119d93573bc1999c38c5e55438162e2b",
+    "mtime": 1795007441.7554293,
+    "seen": 1795007466.404644,
+    "ast_hash": "e909958f31dff64eee66c855d39e7bb9",
     "semantic_hash": ""
   },
   "src/app/(site)/page.tsx": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1795007266.334045,
-    "seen": 1795007277.736629,
+    "mtime": 1795007452.7300503,
+    "seen": 1795007466.404703,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
