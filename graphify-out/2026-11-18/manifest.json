@@ -54,15 +54,15 @@
     "semantic_hash": ""
   },
   "playwright.config.ts": {
-    "mtime": 1794865245.2417505,
-    "seen": 1794866776.984704,
+    "mtime": 1794865246.2417505,
+    "seen": 1795007277.7365718,
     "ast_hash": "3b8e7703219bc1ecbb73ef04e4609148",
     "semantic_hash": "3b8e7703219bc1ecbb73ef04e4609148"
   },
   "src/app/(site)/layout.tsx": {
-    "mtime": 1794949492.0285397,
-    "seen": 1794949545.0364459,
-    "ast_hash": "7fa5170519c06e057a5d471bc099239e",
+    "mtime": 1795007441.7554293,
+    "seen": 1795007466.404644,
+    "ast_hash": "e909958f31dff64eee66c855d39e7bb9",
     "semantic_hash": ""
   },
   "src/app/(site)/page.tsx": {
@@ -114,8 +114,8 @@
     "semantic_hash": "b75b7007fc7cced7b892979bf07743f8"
   },
   "src/components/layout/Footer.tsx": {
-    "mtime": 1794949448.3931527,
-    "seen": 1794949545.036459,
+    "mtime": 1794951516.9252648,
+    "seen": 1795007277.7365901,
     "ast_hash": "6fb519e4fdcd9bdd5a1ae4f00ba32e21",
     "semantic_hash": ""
   },
@@ -234,8 +234,8 @@
     "semantic_hash": ""
   },
   "src/components/ui/SocialLinks.tsx": {
-    "mtime": 1794949461.646066,
-    "seen": 1794949545.036489,
+    "mtime": 1794951516.9258556,
+    "seen": 1795007277.7366242,
     "ast_hash": "7827369175e1b91bddd08db27cb81014",
     "semantic_hash": ""
   },
@@ -318,14 +318,14 @@
     "semantic_hash": ""
   },
   "src/sites/barbershop/config.ts": {
-    "mtime": 1794950988.0790057,
-    "seen": 1794951007.351139,
+    "mtime": 1794951516.9445958,
+    "seen": 1795007277.73665,
     "ast_hash": "557828af565d77416f71c9d97229ee09",
     "semantic_hash": ""
   },
   "src/sites/barbershop/content.ts": {
-    "mtime": 1794950988.0791192,
-    "seen": 1794951007.35114,
+    "mtime": 1794951516.9449975,
+    "seen": 1795007277.736651,
     "ast_hash": "6b169abfbe868f1fabb31323ce0c9d58",
     "semantic_hash": ""
   },
@@ -336,8 +336,8 @@
     "semantic_hash": ""
   },
   "src/sites/sites.test.ts": {
-    "mtime": 1794949476.6986938,
-    "seen": 1794949545.036513,
+    "mtime": 1794951516.9267225,
+    "seen": 1795007277.736653,
     "ast_hash": "6b499f5ccd12e504c507b2eb0c4ce4de",
     "semantic_hash": ""
   },
@@ -348,8 +348,8 @@
     "semantic_hash": ""
   },
   "src/types/site.ts": {
-    "mtime": 1794949438.0161989,
-    "seen": 1794949545.036515,
+    "mtime": 1794951516.9272733,
+    "seen": 1795007277.736655,
     "ast_hash": "5f0f3d4e7a1b76260b126baaf5670c88",
     "semantic_hash": ""
   },
@@ -384,8 +384,8 @@
     "semantic_hash": "c98dbebb744eadc1acc4b9f58bfe0f42"
   },
   "CLAUDE.md": {
-    "mtime": 1794949540.6027584,
-    "seen": 1794949545.03652,
+    "mtime": 1794951516.9164636,
+    "seen": 1795007277.736661,
     "ast_hash": "7d66f20ca2dcaeccd9799ad3ad82ae04",
     "semantic_hash": ""
   },
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1794950998.1561275,
-    "seen": 1794951007.351111,
+    "mtime": 1795007452.7300503,
+    "seen": 1795007466.404703,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
@@ -618,8 +618,8 @@
     "semantic_hash": ""
   },
   "src/components/layout/Footer.test.tsx": {
-    "mtime": 1794949476.201545,
-    "seen": 1794949545.036458,
+    "mtime": 1794951516.924716,
+    "seen": 1795007277.736589,
     "ast_hash": "1d3d6164811d9949532b3058e23e192c",
     "semantic_hash": ""
   },

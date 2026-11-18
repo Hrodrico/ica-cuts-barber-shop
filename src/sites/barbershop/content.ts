@@ -1,4 +1,5 @@
 import type { SiteContent } from "@/types/content";
+import { agendaUrl } from "./config";
 
 export const content: SiteContent = {
   hero: {
@@ -13,8 +14,8 @@ export const content: SiteContent = {
         alt: "Barbero cortando el pelo con tijera y peineta",
       },
     ],
-    // La agenda (AgendaPro) se configura en config.contact.booking y se muestra en /reservar.
-    primaryCta: { label: "Agenda tu hora", href: "/reservar" },
+    // Con JavaScript, el enlace a la agenda abre el pop-up de reservas (config.contact.booking).
+    primaryCta: { label: "Agenda tu hora", href: agendaUrl },
     secondaryCta: { label: "Ver servicios", href: "/#servicios" },
   },
   about: {

@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { ContactInfo } from "@/types/site";
-import { bookingHref } from "@/lib/booking";
 import { emailUrl, phoneUrl, whatsappUrl } from "@/lib/contact";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -43,7 +42,7 @@ export function ContactSection({ id, label, contact }: Props) {
           />
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {booking && (
-              <ButtonLink href={bookingHref(booking)} external={!booking.embed}>
+              <ButtonLink href={booking.url} external>
                 <CalendarIcon className={iconClass} />
                 {booking.label}
               </ButtonLink>

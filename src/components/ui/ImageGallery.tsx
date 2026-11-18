@@ -113,7 +113,7 @@ export function ImageGallery({ images, label, className = "" }: Props) {
           if (event.key === "ArrowLeft") go(current - 1);
         }}
         // El visor siempre es oscuro: en modo oscuro foreground es claro, por eso se invierte.
-        className="gallery-dialog m-0 h-dvh max-h-none w-screen max-w-none bg-foreground p-0 text-background backdrop:bg-foreground dark:bg-background dark:text-foreground dark:backdrop:bg-background"
+        className="modal-dialog m-0 h-dvh max-h-none w-screen max-w-none bg-foreground p-0 text-background backdrop:bg-foreground dark:bg-background dark:text-foreground dark:backdrop:bg-background"
       >
         {expanded && (
           <div className="flex h-full w-full flex-col">

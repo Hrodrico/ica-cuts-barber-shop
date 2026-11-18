@@ -166,8 +166,8 @@ body {
  * Visor de la galería (ImageGallery): aparece y se va por el mismo camino (fundido y una
  * escala mínima), en vez de cubrir la pantalla de golpe. Con "reducir movimiento", solo fundido.
  */
-.gallery-dialog,
-.gallery-dialog::backdrop {
+.modal-dialog,
+.modal-dialog::backdrop {
   opacity: 0;
   transition:
     opacity 250ms ease-out,
@@ -176,33 +176,43 @@ body {
     overlay 250ms allow-discrete;
 }
 
-.gallery-dialog {
+.modal-dialog {
   scale: 0.97;
 }
 
-.gallery-dialog[open],
-.gallery-dialog[open]::backdrop {
+.modal-dialog[open],
+.modal-dialog[open]::backdrop {
   opacity: 1;
 }
 
-.gallery-dialog[open] {
+.modal-dialog[open] {
   scale: 1;
 }
 
 @starting-style {
-  .gallery-dialog[open],
-  .gallery-dialog[open]::backdrop {
+  .modal-dialog[open],
+  .modal-dialog[open]::backdrop {
     opacity: 0;
   }
 
-  .gallery-dialog[open] {
+  .modal-dialog[open] {
     scale: 0.97;
   }
 }
 
+/* La página de atrás no se desplaza con gestos sobre el fondo ni al llegar al borde del pop-up. */
+.booking-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+.booking-dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .gallery-dialog,
-  .gallery-dialog[open] {
+  .modal-dialog,
+  .modal-dialog[open] {
     scale: 1;
   }
 }

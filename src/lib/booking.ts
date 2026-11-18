@@ -1,26 +1,23 @@
-import type { BookingProfessional, ContactInfo } from "@/types/site";
+import type { ContactInfo } from "@/types/site";
 
 type Booking = NonNullable<ContactInfo["booking"]>;
 
-/** Ruta pública de la agenda embebida. */
-export const bookingPath = "/reservar";
+export type BookingOption = {
+  label: string;
+  /** URL de la agenda que se carga en el iframe. */
+  src: string;
+};
 
-/** id del contenedor de la agenda embebida: el WhatsApp flotante se oculta mientras se ve. */
-export const bookingEmbedId = "agenda";
-
-export function professionalPath(slug: string): string {
-  return `${bookingPath}/${slug}`;
-}
-
-/** Destino de los botones de reserva: la página interna si la agenda va embebida; si no, la externa. */
-export function bookingHref(booking: Booking): string {
-  return booking.embed ? bookingPath : booking.url;
+/** Agenda general más la de cada profesional. Sin profesionales no hay nada que elegir. */
+export function bookingOptions(booking: Booking): BookingOption[] {
+  const professionals = booking.professionals ?? [];
+  if (professionals.length === 0) return [];
+  return [
+    { label: "Cualquier profesional", src: booking.url },
+    ...professionals.map((professional) => ({ label: professional.name, src: professional.url })),
+  ];
 }
 
 export function isExternalHref(href: string): boolean {
   return /^https?:\/\//.test(href);
-}
-
-export function findProfessional(booking: Booking, slug: string): BookingProfessional | undefined {
-  return booking.professionals?.find((professional) => professional.slug === slug);
 }
