@@ -60,6 +60,7 @@ describe("BookingDialog", () => {
     fireEvent.click(screen.getByRole("button", { name: "Ana", hidden: true }));
     await act(() => new Promise((resolve) => setTimeout(resolve)));
     expect(document.querySelector("iframe")).toHaveAttribute("src", options[1].src);
+    expect(screen.getByRole("status", { hidden: true })).toHaveTextContent("Cargando agenda de Ana…");
   });
 
   it("deja pasar Ctrl/⌘ + clic y los enlaces a otras páginas", () => {

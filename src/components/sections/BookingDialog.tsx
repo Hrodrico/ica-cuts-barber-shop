@@ -110,7 +110,18 @@ export function BookingDialog({ title, description, frameTitle, src: defaultSrc,
         {/* En móvil, de borde a borde; en escritorio, con margen inferior dentro del panel. */}
         <div className="-mx-4 mt-3 flex min-h-0 flex-1 sm:mx-0 sm:mb-6">
           {/* key: al cambiar de profesional se monta un iframe nuevo en vez de reutilizar su historial. */}
-          {src && <BookingFrame key={src} src={src} title={frameTitle} />}
+          {src && (
+            <BookingFrame
+              key={src}
+              src={src}
+              title={frameTitle}
+              loadingLabel={
+                currentOption && normalize(currentOption.src) !== normalize(defaultSrc)
+                  ? `Cargando agenda de ${currentOption.label}…`
+                  : "Cargando agenda…"
+              }
+            />
+          )}
         </div>
       </div>
     </dialog>

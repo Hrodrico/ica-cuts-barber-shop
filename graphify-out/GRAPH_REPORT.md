@@ -1,7 +1,7 @@
 # Graph Report - ica-cuts-barber-shop  (2026-11-18)
 
 ## Corpus Check
-- 96 files · ~41,876 words
+- 96 files · ~41,948 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 4, .example 1, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0b8e851d`
+- Built from commit: `a0a25976`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,8 +48,8 @@
 3. `react` - 21 edges
 4. `Container()` - 19 edges
 5. `ContactSection()` - 16 edges
-6. `@testing-library/react` - 16 edges
-7. `compilerOptions` - 16 edges
+6. `compilerOptions` - 16 edges
+7. `@testing-library/react` - 16 edges
 8. `ButtonLink()` - 13 edges
 9. `HomePage()` - 12 edges
 10. `Media()` - 12 edges
