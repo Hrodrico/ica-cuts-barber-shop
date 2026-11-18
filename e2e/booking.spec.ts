@@ -23,8 +23,8 @@ test.describe("agenda en pop-up", () => {
     await expect(dialog.getByRole("link", { name: /pestaña nueva/ })).toHaveAttribute("href", booking!.url);
   });
 
-  test("el botón del header abre el pop-up", async ({ page, isMobile }) => {
-    test.skip(isMobile, "en móvil el botón del header se oculta");
+  // También en móvil: el botón del header es la acción principal a mano en toda la página.
+  test("el botón del header abre el pop-up", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("banner").getByRole("link", { name: booking!.label }).click();
     await expect(page.getByRole("dialog", { name: booking!.label })).toBeVisible();

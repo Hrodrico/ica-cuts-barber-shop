@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "src/components/layout/Header.tsx": {
-    "mtime": 1795007614.8679585,
-    "seen": 1795012028.241894,
-    "ast_hash": "94607aed3bffc3599268014cf351da9d",
+    "mtime": 1795036607.3056593,
+    "seen": 1795036653.172108,
+    "ast_hash": "c09909ebdc8f6955c1532395e4a7430b",
     "semantic_hash": ""
   },
   "src/components/layout/MobileMenu.test.tsx": {
@@ -384,15 +384,15 @@
     "semantic_hash": "c98dbebb744eadc1acc4b9f58bfe0f42"
   },
   "CLAUDE.md": {
-    "mtime": 1795011950.9459236,
-    "seen": 1795012028.241954,
-    "ast_hash": "efcad31fcd5349ef72e014bc6b18bd98",
+    "mtime": 1795014950.7379344,
+    "seen": 1795036653.172168,
+    "ast_hash": "4fd94f4ee7935b640e36fffd6b144398",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794865245.2348483,
-    "seen": 1794866776.984766,
-    "ast_hash": "014c63fc5cec958e0a45544b81109e57",
+    "mtime": 1795014946.2440324,
+    "seen": 1795036653.172168,
+    "ast_hash": "9aed3066833dc212e14e6cdf39f6f78f",
     "semantic_hash": ""
   },
   ".github/rulesets/main.json": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1795014268.816764,
-    "seen": 1795014272.7716491,
+    "mtime": 1795036617.6214194,
+    "seen": 1795036653.1721401,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   "e2e/booking.spec.ts": {
-    "mtime": 1795011950.9537787,
-    "seen": 1795012028.2418702,
-    "ast_hash": "a7fe9325bf57c335599dcc1c4f2a4547",
+    "mtime": 1795036607.3059773,
+    "seen": 1795036653.172083,
+    "ast_hash": "a91335a02c2fd31ef90ffc78e6050044",
     "semantic_hash": ""
   },
   "src/lib/booking.test.ts": {

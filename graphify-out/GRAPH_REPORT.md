@@ -1,7 +1,7 @@
 # Graph Report - ica-cuts-barber-shop  (2026-11-18)
 
 ## Corpus Check
-- 96 files · ~41,948 words
+- 96 files · ~41,690 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 4, .example 1, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a0a25976`
+- Built from commit: `67b5aa75`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
