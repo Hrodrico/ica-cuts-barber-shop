@@ -58,17 +58,17 @@ describe.each(Object.entries(sites))("sitio %s", (_, { config, content }) => {
       }
     });
 
-    it("la agenda y sus profesionales usan URLs https y slugs únicos aptos para URL", () => {
+    it("la agenda y sus profesionales usan URLs https distintas y tienen nombre", () => {
       const booking = config.contact.booking;
       if (!booking) return;
       expect(booking.url).toMatch(/^https:\/\//);
       const professionals = booking.professionals ?? [];
       for (const professional of professionals) {
-        expect(professional.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
-        expect(professional.url, professional.slug).toMatch(/^https:\/\//);
-        expect(professional.name.trim(), professional.slug).not.toBe("");
+        expect(professional.url, professional.name).toMatch(/^https:\/\//);
+        expect(professional.name.trim(), professional.url).not.toBe("");
       }
-      expect(duplicates(professionals.map((professional) => professional.slug))).toEqual([]);
+      // El pop-up reconoce cada agenda por su URL: no pueden repetirse.
+      expect(duplicates([booking.url, ...professionals.map((professional) => professional.url)])).toEqual([]);
     });
 
     it("no repite redes sociales", () => {

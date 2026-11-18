@@ -20,8 +20,8 @@ type Props = {
 
 export function Header({ name, logo, logoDark, navigation, cta, themeToggle = false }: Props) {
   // En escritorio el botón CTA ya lleva a su destino: no repetirlo como enlace del menú.
-  // El botón comparte el breakpoint del menú (lg): debajo, el destino queda solo dentro del menú.
-  // Antes de lg los enlaces no caben en una línea junto al logo y el botón.
+  // Antes de lg los enlaces no caben en una línea junto al logo y el botón: van al menú móvil,
+  // y el botón queda visible (compacto) para tener la acción principal siempre a mano.
   const desktopNavigation = cta ? navigation.filter((item) => item.href !== cta.href) : navigation;
 
   // material-bar: borde solo con contenido debajo y opaco con "reducir transparencia" (globals.css).
@@ -76,13 +76,14 @@ export function Header({ name, logo, logoDark, navigation, cta, themeToggle = fa
 
         <div className="flex items-center gap-1 justify-self-end lg:gap-2">
           {themeToggle && <ThemeToggle />}
-          {/* La visibilidad va en el contenedor: el inline-flex de ButtonLink le gana a "hidden". */}
           {cta && (
-            <div className="hidden lg:block">
-              <ButtonLink href={cta.href} external={isExternalHref(cta.href)} className="px-5 py-2">
-                {cta.label}
-              </ButtonLink>
-            </div>
+            <ButtonLink
+              href={cta.href}
+              external={isExternalHref(cta.href)}
+              className="px-4 py-2 whitespace-nowrap lg:px-5"
+            >
+              {cta.label}
+            </ButtonLink>
           )}
           <MobileMenu navigation={navigation} />
         </div>

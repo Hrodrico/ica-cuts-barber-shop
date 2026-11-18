@@ -4,7 +4,7 @@ import { config } from "./site";
 const booking = config.contact.booking?.embed ? config.contact.booking : undefined;
 const professionals = booking?.professionals ?? [];
 
-test.describe("agenda embebida", () => {
+test.describe("agenda en pop-up", () => {
   test.skip(!booking, "el negocio no tiene agenda embebida");
 
   // La agenda es de un tercero: se verifica qué se carga, sin depender de su servicio.
@@ -13,54 +13,63 @@ test.describe("agenda embebida", () => {
     await page.route((url) => url.hostname === agendaHost, (route) => route.abort());
   });
 
-  test("/reservar carga la agenda del negocio con su enlace de respaldo", async ({ page }) => {
-    await page.goto("/reservar");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText(booking!.label);
-    await expect(page.locator("iframe:visible")).toHaveAttribute("src", booking!.url);
-    await expect(page.getByRole("link", { name: /pestaña nueva/ })).toHaveAttribute("href", booking!.url);
+  test("el botón del hero abre la agenda en un pop-up, sin salir del sitio", async ({ page }) => {
+    await page.goto("/");
+    await page.locator("main").getByRole("link", { name: booking!.label }).first().click();
+    const dialog = page.getByRole("dialog", { name: booking!.label });
+    await expect(dialog).toBeVisible();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(dialog.locator("iframe")).toHaveAttribute("src", booking!.url);
+    await expect(dialog.getByRole("link", { name: /pestaña nueva/ })).toHaveAttribute("href", booking!.url);
   });
 
-  // La agenda tiene su propio scroll: si no cabe en pantalla, en móvil el dedo queda atrapado
-  // en ella y no se alcanza su parte inferior.
+  // También en móvil: el botón del header es la acción principal a mano en toda la página.
+  test("el botón del header abre el pop-up", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("banner").getByRole("link", { name: booking!.label }).click();
+    await expect(page.getByRole("dialog", { name: booking!.label })).toBeVisible();
+  });
+
+  // Un solo scroll: la agenda cabe en la pantalla y la página de atrás no se mueve.
   test("la agenda cabe completa en la pantalla", async ({ page }) => {
-    await page.goto("/reservar");
-    const frame = await page.locator("iframe:visible").boundingBox();
+    await page.goto("/");
+    await page.locator("main").getByRole("link", { name: booking!.label }).first().click();
+    const frame = await page.getByRole("dialog").locator("iframe").boundingBox();
     const viewport = page.viewportSize()!;
     expect(frame).not.toBeNull();
     expect(frame!.y + frame!.height).toBeLessThanOrEqual(viewport.height + 1);
     expect(frame!.height).toBeGreaterThan(viewport.height / 2);
   });
 
-  test("el WhatsApp flotante no tapa la agenda", async ({ page }) => {
-    test.skip(!config.contact.whatsapp, "sin WhatsApp");
-    await page.goto("/reservar");
-    await expect(page.getByRole("link", { name: "Escribir por WhatsApp" })).toBeHidden();
-  });
-
-  test("el botón del header lleva a /reservar", async ({ page, isMobile }) => {
-    test.skip(isMobile, "en móvil el botón del header se oculta");
+  test("se cierra con el botón y con Esc", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("banner").getByRole("link", { name: booking!.label }).click();
-    await expect(page).toHaveURL(/\/reservar$/);
+    const open = page.locator("main").getByRole("link", { name: booking!.label }).first();
+    const dialog = page.getByRole("dialog", { name: booking!.label });
+
+    await open.click();
+    await dialog.getByRole("button", { name: "Cerrar agenda" }).click();
+    await expect(dialog).toBeHidden();
+
+    await open.click();
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
   });
 
   test("el selector cambia a la agenda de cada profesional", async ({ page }) => {
     test.skip(professionals.length === 0, "sin profesionales configurados");
     const [professional] = professionals;
+    await page.goto("/");
+    await page.locator("main").getByRole("link", { name: booking!.label }).first().click();
+    const dialog = page.getByRole("dialog", { name: booking!.label });
+    const option = dialog.getByRole("group", { name: "Elige profesional" }).getByRole("button", { name: professional.name });
+    await option.click();
+    await expect(option).toHaveAttribute("aria-pressed", "true");
+    await expect(dialog.locator("iframe")).toHaveAttribute("src", professional.url);
+  });
+
+  test("la antigua página /reservar ya no existe", async ({ page }) => {
     await page.goto("/reservar");
-    await page.getByRole("navigation", { name: "Elige profesional" }).getByRole("link", { name: professional.name }).click();
-    await expect(page).toHaveURL(new RegExp(`/reservar/${professional.slug}$`));
-    await expect(page.locator("iframe:visible")).toHaveAttribute("src", professional.url);
-    await expect(page.getByRole("link", { name: professional.name })).toHaveAttribute("aria-current", "page");
-  });
-
-  test("un profesional inexistente muestra not-found", async ({ page }) => {
-    await page.goto("/reservar/profesional-que-no-existe");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Página no encontrada");
-  });
-
-  test("sitemap.xml incluye la página de reservas", async ({ request }) => {
-    const text = await (await request.get("/sitemap.xml")).text();
-    expect(text).toContain(`<loc>${config.url}/reservar</loc>`);
   });
 });

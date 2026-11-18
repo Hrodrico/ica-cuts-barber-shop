@@ -1,19 +1,17 @@
 {
   "1": "devDependencies",
-  "3": "icons.tsx",
+  "3": "ImageGallery.tsx",
   "5": "ContactSection.tsx",
   "7": "next",
   "9": "vitest",
   "11": "eslint.config.mjs",
-  "19": "next",
-  "20": "@testing-library/react",
-  "21": "trabajos/[slug]/page.tsx",
+  "19": "react",
+  "20": "Header.tsx",
+  "21": "Rating.tsx",
   "22": "package.json",
-  "23": "Footer.tsx",
+  "23": "ImageCarousel.test.tsx",
   "24": "types/site.ts",
   "25": "dependencies",
   "26": ".close",
-  "27": ".showModal",
-  "28": "useSwipeTrack.ts",
-  "29": "next.config.ts"
+  "27": ".showModal"
 }

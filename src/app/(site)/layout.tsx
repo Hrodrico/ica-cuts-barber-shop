@@ -1,12 +1,13 @@
 import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
-import { bookingEmbedId, bookingHref } from "@/lib/booking";
+import { bookingOptions } from "@/lib/booking";
 import { whatsappUrl } from "@/lib/contact";
 import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
 import { Footer, type FooterContactLine } from "@/components/layout/Footer";
 import { HashlessSectionLinks } from "@/components/layout/HashlessSectionLinks";
 import { Header } from "@/components/layout/Header";
 import { TouchActiveStates } from "@/components/layout/TouchActiveStates";
+import { BookingDialog } from "@/components/sections/BookingDialog";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 /**
@@ -28,10 +29,11 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
   if (email) contactLines.push({ label: email });
   if (phone) contactLines.push({ label: phone });
   if (location) contactLines.push({ label: location });
-  // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
+  // Con agenda en línea, el botón principal lleva a reservar (en el pop-up, si va embebida);
+  // si no, a la sección de contacto.
   const { booking } = site.contact;
   const cta = booking
-    ? { label: booking.label, href: bookingHref(booking) }
+    ? { label: booking.label, href: booking.url }
     : site.sections.contact
       ? { label: site.actions?.quote ?? site.labels.contact, href: `/#${sectionIds.contact}` }
       : undefined;
@@ -72,12 +74,16 @@ export default async function SiteLayout({ children }: LayoutProps<"/">) {
           href={whatsappUrl(whatsapp)}
           // El hero tiene sus propios botones (en móvil el flotante tapaba los del carrusel) y
           // la sección de contacto ya muestra WhatsApp: el botón se oculta mientras se vean.
-          // En /reservar taparía los botones de la agenda.
-          hideWhenVisible={[
-            heroId,
-            ...(site.sections.contact ? [sectionIds.contact] : []),
-            ...(booking?.embed ? [bookingEmbedId] : []),
-          ]}
+          hideWhenVisible={[heroId, ...(site.sections.contact ? [sectionIds.contact] : [])]}
+        />
+      )}
+      {booking?.embed && (
+        <BookingDialog
+          title={booking.label}
+          description={booking.description}
+          frameTitle={`Agenda en línea de ${site.name}`}
+          src={booking.url}
+          options={bookingOptions(booking)}
         />
       )}
     </>

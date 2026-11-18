@@ -1,6 +1,10 @@
 import type { SiteConfig } from "@/types/site";
 
 // IcaCuts: datos tomados de su página de AgendaPro (sucursal 28448) y del afiche del local.
+
+/** Agenda de la sucursal en AgendaPro. El hero (content.ts) también la usa. */
+export const agendaUrl = "https://icacuts.site.agendapro.com/cl/sucursal/28448";
+
 export const config: SiteConfig = {
   name: "Ica Cuts",
   tagline: "Barbería y academia de barbería en Maipú",
@@ -18,17 +22,17 @@ export const config: SiteConfig = {
     },
     // AgendaPro permite embeberse (sin X-Frame-Options); ids tomados de su página pública.
     booking: {
-      url: "https://icacuts.site.agendapro.com/cl/sucursal/28448",
+      url: agendaUrl,
       label: "Agenda tu hora",
       embed: true,
       description:
         "Elige servicio, barbero y horario. Te llegará la confirmación por correo.",
       professionals: [
-        { slug: "alonso-santana", name: "Alonso Santana", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/99987" },
-        { slug: "gael", name: "Gael", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/432441" },
-        { slug: "vito", name: "Vito", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/579216" },
-        { slug: "jotta", name: "Jotta", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/331377" },
-        { slug: "juanca", name: "Juanca", url: "https://icacuts.site.agendapro.com/cl/sucursal/28448/profesional/280184" },
+        { name: "Alonso Santana", url: `${agendaUrl}/profesional/99987` },
+        { name: "Gael", url: `${agendaUrl}/profesional/432441` },
+        { name: "Vito", url: `${agendaUrl}/profesional/579216` },
+        { name: "Jotta", url: `${agendaUrl}/profesional/331377` },
+        { name: "Juanca", url: `${agendaUrl}/profesional/280184` },
       ],
     },
     address: "Parque Central Poniente 149",
