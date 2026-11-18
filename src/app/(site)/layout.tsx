@@ -1,7 +1,7 @@
 import { cacheLife } from "next/cache";
 import { site } from "@/lib/site";
 import { bookingEmbedId, bookingHref } from "@/lib/booking";
-import { emailUrl, phoneUrl, whatsappUrl } from "@/lib/contact";
+import { whatsappUrl } from "@/lib/contact";
 import { buildNavigation, heroId, sectionIds } from "@/lib/navigation";
 import { Footer, type FooterContactLine } from "@/components/layout/Footer";
 import { HashlessSectionLinks } from "@/components/layout/HashlessSectionLinks";
@@ -21,13 +21,13 @@ async function getCurrentYear() {
 
 export default async function SiteLayout({ children }: LayoutProps<"/">) {
   const navigation = buildNavigation(site);
-  const { phone, email, address, city, mapUrl, whatsapp } = site.contact;
+  const { phone, email, address, city, whatsapp } = site.contact;
   const location = [address, city].filter(Boolean).join(", ");
-  // Tocables: en el teléfono, llamar, escribir o abrir el mapa sin copiar el texto.
+  // Solo texto, a pedido del negocio: los enlaces (correo, teléfono, mapa) están en la sección de contacto.
   const contactLines: FooterContactLine[] = [];
-  if (email) contactLines.push({ label: email, href: emailUrl(email) });
-  if (phone) contactLines.push({ label: phone, href: phoneUrl(phone) });
-  if (location) contactLines.push({ label: location, href: mapUrl, external: Boolean(mapUrl) });
+  if (email) contactLines.push({ label: email });
+  if (phone) contactLines.push({ label: phone });
+  if (location) contactLines.push({ label: location });
   // Con agenda en línea, el botón principal lleva a reservar; si no, a la sección de contacto.
   const { booking } = site.contact;
   const cta = booking
