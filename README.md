@@ -133,7 +133,7 @@ La foto del hero es **provisional** (la portada de AgendaPro) hasta tener fotos 
 ## Despliegue en Vercel
 
 1. Importar el repositorio en Vercel (detecta Next.js automáticamente). No hace falta `SITE_ID`.
-2. Asignar el dominio y actualizar `url` en `src/sites/barbershop/config.ts` (hoy es provisional: `https://ica-cuts-barber-shop.vercel.app`).
+2. Asignar el dominio y actualizar `url` en `src/sites/barbershop/config.ts` (hoy es provisional: `https://ica-cuts-barber-shop-id3i.vercel.app`).
 
 Vercel publica cada push a `main` en producción y cada PR como vista previa.
 

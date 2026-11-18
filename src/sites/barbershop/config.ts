@@ -11,7 +11,7 @@ export const config: SiteConfig = {
   description:
     "Barbería, salón de manicure y academia de barbería en Maipú. Profesionalismo, estilo, comodidad y la mejor atención.",
   // Provisional hasta tener dominio propio.
-  url: "https://ica-cuts-barber-shop.vercel.app",
+  url: "https://ica-cuts-barber-shop-id3i.vercel.app",
   locale: "es-CL",
   contact: {
     phone: "+56 9 7841 3652",
