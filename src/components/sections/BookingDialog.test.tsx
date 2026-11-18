@@ -43,6 +43,7 @@ describe("BookingDialog", () => {
     await act(() => new Promise((resolve) => setTimeout(resolve)));
     expect(dialog().open).toBe(true);
     expect(document.querySelector("iframe")).toHaveAttribute("src", src);
+    expect(screen.getByRole("status", { hidden: true })).toHaveTextContent("Cargando todas las agendas…");
     expect(screen.getByRole("link", { name: /pestaña nueva/, hidden: true })).toHaveAttribute("href", src);
   });
 

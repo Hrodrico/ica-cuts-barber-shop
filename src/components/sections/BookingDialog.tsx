@@ -116,9 +116,11 @@ export function BookingDialog({ title, description, frameTitle, src: defaultSrc,
               src={src}
               title={frameTitle}
               loadingLabel={
-                currentOption && normalize(currentOption.src) !== normalize(defaultSrc)
-                  ? `Cargando agenda de ${currentOption.label}…`
-                  : "Cargando agenda…"
+                !currentOption
+                  ? "Cargando agenda…"
+                  : normalize(currentOption.src) === normalize(defaultSrc)
+                    ? "Cargando todas las agendas…"
+                    : `Cargando agenda de ${currentOption.label}…`
               }
             />
           )}
