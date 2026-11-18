@@ -25,7 +25,7 @@ Este repositorio (`ica-cuts-barber-shop`) es el **clon de cliente** de Ica Cuts,
 - **Trabajos desactivado:** la sección `projects` (`/trabajos`) está apagada en `config.sections` hasta que haya fotos reales. La foto del hero es provisional.
 - **Candidatos a portar a la base:** `Service.price`/`duration` (`types/content.ts`), `ContactInfo.booking` con `embed` y `professionals` (`types/site.ts`), `lib/booking.ts`, `BookingDialog` (con `BookingOptions` y `BookingFrame`) y la clase `.modal-dialog` de `globals.css`; `branding.footer` (`"surface"` para temas oscuros cuyo primary es el color de las acciones, como el dorado de IcaCuts), el contacto tocable del footer y `SocialLinks.iconClassName`. Todos son genéricos y opcionales.
 - **Marca:** logo vectorizado en `public/logos/logo-icacuts.svg`; `src/app/icon.png`, `apple-icon.png` y `public/og-image.png` son propios del cliente.
-- El `README.md` todavía describe la base (por ejemplo, dice que construcción es el sitio por defecto). Si chocan, manda este archivo.
+- El `README.md` describe este clon para quien lo mantenga; si choca con este archivo, manda este archivo.
 
 ## Stack y comandos
 

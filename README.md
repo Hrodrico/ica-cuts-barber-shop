@@ -1,23 +1,40 @@
-# Business Web Starter
+# Ica Cuts — sitio web
 
-Base reutilizable para crear el sitio web de un negocio con **Next.js**, **TypeScript** y **Tailwind CSS**, desplegada en **Vercel**.
+Sitio de **Ica Cuts**, barbería y academia de barbería en Maipú (Parque Central Poniente 149). Muestra servicios con precio y duración, reseñas, horario y contacto, y permite **agendar hora sin salir del sitio**: la agenda de AgendaPro se abre en un pop-up.
 
-Trae lo que todo negocio necesita desde el día uno: **home, servicios, trabajos realizados con reseñas, contacto (WhatsApp, teléfono, correo) y redes sociales**, con modo claro/oscuro, carrusel de fotos y vistas previas mientras cargan las imágenes. Cada proyecto nuevo (construcción, barbería, mecánica, fletes, e-commerce…) parte clonando este repositorio y crece por su cuenta: uno puede quedarse como sitio informativo y otro sumar login, agenda o carrito.
+Hecho con **Next.js**, **TypeScript** y **Tailwind CSS**, para desplegar en **Vercel**. Parte de la plantilla [`business-web-starter`](https://github.com/Hrodrico/business-web-starter) y evoluciona por separado: no se sincroniza con ella.
 
-## Cómo se usa
+## Qué tiene el sitio
 
-```text
-business-web-starter          ← esta base (GitHub Template repository)
-   ├── noua-construccion-web  ← sitio informativo
-   ├── barberia-xxx-app       ← + login y seguimiento de atención
-   └── ...
-```
+- **Home:** hero, quiénes somos, servicios (precio y duración), reseñas y contacto.
+- **Reservas en pop-up:** los botones "Agenda tu hora" (header, hero y contacto) abren AgendaPro en un `<dialog>` a pantalla completa en móvil. Dentro se puede elegir barbero. AgendaPro sigue siendo la agenda real y es quien envía las confirmaciones.
+- **WhatsApp** flotante con mensaje precargado; se oculta mientras se ven el hero o la sección de contacto.
+- **Tema oscuro** con el dorado de la marca. El negocio no define paleta clara, así que no hay botón sol/luna.
+- **Footer** con el contacto como texto. Los enlaces (correo, teléfono, mapa) están en la sección de contacto, a pedido del negocio.
+- **Trabajos** (`/trabajos`) existe pero está **desactivado** hasta tener fotos reales de cortes.
 
-1. En GitHub: **Use this template → Create a new repository** (ej: `noua-construccion-web`).
-2. Personaliza la configuración y el contenido del negocio (ver más abajo).
-3. Conecta el repositorio nuevo a Vercel y asigna el dominio.
+### Datos del negocio
 
-Los clones no se sincronizan con la base. Si mejoras algo aquí, cópialo manualmente a los proyectos que lo necesiten.
+Los datos son reales y salen de la página pública de AgendaPro (sucursal 28448) y del afiche del local. No reemplazarlos por datos de ejemplo.
+
+| Qué | Dónde |
+| --- | --- |
+| Nombre, contacto, horario, redes, colores, SEO, secciones activas | `src/sites/barbershop/config.ts` |
+| Agenda de AgendaPro y barberos (`contact.booking`) | `src/sites/barbershop/config.ts` |
+| Hero, quiénes somos, servicios, reseñas | `src/sites/barbershop/content.ts` |
+| Logo | `public/logos/logo-icacuts.svg` |
+| Ícono y vista previa al compartir | `src/app/icon.png`, `src/app/apple-icon.png`, `public/og-image.png` |
+
+El id del negocio sigue siendo `barbershop` a propósito, para portar cambios desde la plantilla o hacia ella sin conflictos.
+
+### Agenda (AgendaPro)
+
+- `contact.booking.url` es la agenda de la sucursal y `professionals` la de cada barbero (`/profesional/<id>`). Los ids se toman de la página pública de AgendaPro (`__NEXT_DATA__`).
+- **Agregar o quitar un barbero:** editar `professionals` en `config.ts`; aparece o desaparece solo en el selector del pop-up.
+- **Cómo se abre el pop-up:** `BookingDialog` (montado en `src/app/(site)/layout.tsx`) intercepta los clics a cualquier enlace a esas URLs. Los botones son enlaces comunes: sin JavaScript, o con Ctrl/⌘ + clic, abren AgendaPro en otra pestaña.
+- **Respaldo:** el pop-up tiene el enlace "Abre la agenda en una pestaña nueva", porque algunos navegadores (Safari) pueden bloquear las cookies de AgendaPro dentro del iframe.
+- **Selector de barbero:** marca la agenda que cargó el sitio. Si dentro de AgendaPro se elige otro barbero, el selector no cambia: un iframe de otro dominio no deja leer lo que pasa adentro.
+- Antes la agenda estaba en una página `/reservar`; se cambió al pop-up porque el scroll de la página y el de la agenda competían.
 
 ## Stack
 
@@ -39,13 +56,6 @@ npm run lint
 npm run images:placeholders   # vistas previas de las fotos (corre solo antes de dev y build)
 ```
 
-La base incluye dos negocios de ejemplo para comprobar que todo cambia sin tocar componentes:
-
-```bash
-npm run dev                          # construction (por defecto)
-SITE_ID=barbershop npm run dev       # barbería de ejemplo
-```
-
 ## Tests
 
 ```bash
@@ -56,19 +66,15 @@ npm run test:e2e                  # E2E (Playwright) contra el build de producci
 ```
 
 - Los tests unitarios viven **junto a cada archivo** (`Rating.tsx` + `Rating.test.tsx`).
-- Los E2E viven en `e2e/` y recorren el sitio en móvil y escritorio.
-- `src/sites/sites.test.ts` valida el contenido de cada negocio: slugs, fechas, reseñas, textos `alt`, que existan las fotos y los logos locales (y su vista previa) y el contraste de los colores del tema en modo claro y oscuro.
-- Los tests no dependen de un negocio: `SITE_ID=barbershop npm run test:e2e` prueba la otra demo.
+- Los E2E viven en `e2e/` y recorren el sitio en móvil (Pixel 7) y escritorio. Los de la agenda bloquean AgendaPro: verifican qué se carga sin depender de su servicio.
+- `src/sites/sites.test.ts` valida el contenido: slugs, fechas, reseñas, textos `alt`, que existan las fotos y el logo (y su vista previa), las URLs de la agenda y el contraste de los colores del tema. Es la red de seguridad al editar `config.ts` o `content.ts`.
+- Antes de cerrar un cambio: `npm run lint`, `npm test` y `npm run build` sin errores, y `npm run test:e2e` si toca rutas, layouts o páginas.
 
 ### Integración continua
 
-`.github/workflows/ci.yml` corre en GitHub Actions en cada push a `main` y en cada pull request: lint y tests unitarios, build + E2E por cada negocio de `src/sites`, y al final el job **CI completo**, que solo pasa si todo lo anterior pasó. Si falla un E2E, el reporte de Playwright queda como artefacto del run.
+`.github/workflows/ci.yml` corre en GitHub Actions en cada push a `main` y en cada pull request: lint y tests unitarios, build + E2E del sitio, y al final el job **CI completo**, que solo pasa si todo lo anterior pasó. Si falla un E2E, el reporte de Playwright queda como artefacto del run.
 
-Vercel no ejecuta los tests: solo hace el build y publica. Para que no llegue nada roto a `main` (y por tanto a producción), protege la rama en GitHub. Hazlo en **cada repo** (la base y cada clon), porque "Use this template" copia los archivos pero no la configuración de GitHub. La regla está versionada en [`.github/rulesets/main.json`](.github/rulesets/main.json): **Settings → Rules → Rulesets → New ruleset → Import a ruleset**. Exige PR, bloquea force push y borrado, pide la rama al día y los checks **`Lint y tests unitarios`** y **`CI completo`**.
-
-Exige solo esos dos checks: los de build + E2E cambian de nombre según la matriz, y `CI completo` ya los cubre.
-
-En un clon de cliente, deja en la matriz `site` del workflow solo el sitio del cliente; la regla de protección no cambia.
+Vercel no ejecuta los tests: solo hace el build y publica. Para que no llegue nada roto a `main`, la rama está protegida con la regla versionada en [`.github/rulesets/main.json`](.github/rulesets/main.json) (**Settings → Rules → Rulesets → Import a ruleset**): exige PR, bloquea force push y borrado, pide la rama al día y los checks **`Lint y tests unitarios`** y **`CI completo`**. No renombrar esos jobs.
 
 ## Estructura
 
@@ -76,118 +82,75 @@ En un clon de cliente, deja en la matriz `site` del workflow solo el sitio del c
 src/
   app/
     layout.tsx               Layout raíz: <html>, fuente, tema y metadatos SEO
-    (site)/                  Sitio público (grupo de rutas)
-      layout.tsx             Header (con botón sol/luna), footer y botón de WhatsApp
+    (site)/
+      layout.tsx             Header, footer, WhatsApp flotante y pop-up de reservas
       page.tsx               Home: hero + secciones activas
-      trabajos/page.tsx      Listado de trabajos realizados
-      trabajos/[slug]/       Detalle de un trabajo: galería, reseñas y skeleton de carga
+      trabajos/              Listado y detalle de trabajos (sección desactivada)
     not-found.tsx
     robots.ts, sitemap.ts
   components/
     layout/                  Header, Footer, MobileMenu, Container, HashlessSectionLinks
-    sections/                Hero, About, Services, Projects, Reviews, Contact
-    ui/                      ButtonLink, Media, ImageCarousel, ImageGallery, ThemeToggle,
-                             Breadcrumbs, Rating, SocialLinks, iconos…
+    sections/                Hero, About, Services, Projects, Reviews, Contact,
+                             BookingDialog (+ BookingOptions, BookingFrame)
+    ui/                      ButtonLink, Media, ImageCarousel, ImageGallery, Rating,
+                             SocialLinks, WhatsAppButton, iconos…
   lib/
-    data.ts                  Capa de acceso a datos (getServices, getProjects…)
-    site.ts                  Configuración del negocio activo
+    data.ts                  Capa de acceso a datos (getServices, getReviews…)
+    site.ts                  Configuración del negocio
+    booking.ts               Opciones del selector de barbero
     contact.ts               Enlaces wa.me, tel: y mailto:
     navigation.ts            Menú derivado de las secciones activas
-    theme.ts                 Colores → variables CSS y script del modo oscuro
+    theme.ts                 Colores → variables CSS
     images.ts                Aplica las vistas previas generadas al contenido
     swipe.ts, useSwipeTrack  Gesto de deslizar del carrusel y la galería
   sites/
-    index.ts                 Registro de negocios y selección por SITE_ID
-    construction/            config.ts + content.ts (demo con modo claro y oscuro)
-    barbershop/              config.ts + content.ts (demo con solo tema oscuro)
+    index.ts                 Registro del negocio (solo barbershop)
+    barbershop/              config.ts + content.ts de Ica Cuts
   types/
     site.ts                  Contrato de configuración (SiteConfig)
-    content.ts               Contrato de contenido (Project, Review, Service…)
+    content.ts               Contrato de contenido (Service, Review, Project…)
   generated/
     image-placeholders.json  Vistas previas generadas (se versiona)
-scripts/
-  generate-image-placeholders.mjs
-public/
-  images/projects/           Fotos de trabajos, en <año>/<slug>/
-  logos/
 ```
 
 ### Reglas de la arquitectura
 
 - **Los componentes no conocen al negocio.** Reciben todo por props. Solo `src/app/` importa la configuración (`@/lib/site`) y los datos (`@/lib/data`).
-- **El contenido se lee solo a través de `src/lib/data.ts`.** Hoy esas funciones devuelven lo que está en `src/sites/<negocio>/content.ts`. Cuando un proyecto necesite base de datos o CMS, se reescriben esas funciones (misma firma) y el resto del código no cambia.
-- **Los colores se definen una sola vez** en `config.ts` y llegan a Tailwind como clases: `bg-primary`, `text-muted`, `border-border`, `bg-surface`, `text-accent`, etc.
-- **Vocabulario genérico en el código, etiquetas en la config.** En el código se habla de `projects`, `services` y `reviews`; lo que ve el usuario sale de `labels` ("Obras realizadas", "Nuestros cortes"…).
+- **El contenido se lee solo a través de `src/lib/data.ts`.** Si más adelante se usa base de datos o CMS, se reescriben esas funciones (misma firma) y el resto no cambia.
+- **Los colores se definen una sola vez** en `config.ts` y llegan a Tailwind como clases: `bg-primary`, `text-muted`, `border-border`, `bg-surface`, etc.
+- **Vocabulario genérico en el código, etiquetas en la config.** En el código se habla de `projects`, `services` y `reviews`; lo que ve el usuario sale de `labels`.
 
-## Personalizar un negocio
+El detalle (y lo propio de Next.js 16) está en [`CLAUDE.md`](CLAUDE.md).
 
-### 1. Configuración: `src/sites/<negocio>/config.ts`
+## Imágenes
 
-Nombre, descripción, dominio (`url`), idioma, contacto (teléfono, correo, WhatsApp con mensaje precargado, dirección, mapa, horarios), redes sociales, logo, colores, SEO, **secciones activas** y **etiquetas** de cada sección. El tipo `SiteConfig` marca qué es obligatorio.
+Las fotos van en `public/images/...` (`.webp` o `.jpg`) y se referencian en `content.ts` con un `alt` descriptivo. Las de cada trabajo van en `/images/projects/<año>/<slug>/` (lo verifica `sites.test.ts`).
 
-### 2. Contenido: `src/sites/<negocio>/content.ts`
+Mientras cargan, las fotos locales muestran una vista previa difuminada que genera `npm run images:placeholders` en `src/generated/image-placeholders.json` (se versiona; corre solo antes de `dev` y `build`).
 
-Hero, quiénes somos, servicios, trabajos realizados (con galería) y reseñas. Una reseña se asocia a un trabajo con `projectSlug` y aparece en su página de detalle.
-
-### 3. Imágenes
-
-Copia las fotos a `public/images/...` (formato `.webp` o `.jpg`) y referéncialas en el contenido:
-
-```ts
-cover: { src: "/images/projects/2026/remodelacion-cocina-nunoa/cocina.webp", alt: "Cocina remodelada con isla central" },
-```
-
-Las fotos de cada trabajo van en `/images/projects/<año>/<slug>/` (lo verifica `sites.test.ts`). En `hero.images`, una imagen se muestra fija y varias como carrusel; la galería de cada trabajo se desliza con el dedo o arrastrando.
-
-Mientras cargan, las fotos locales muestran una vista previa difuminada: `npm run images:placeholders` (corre solo antes de `dev` y `build`, con `sharp`) la genera en `src/generated/image-placeholders.json`, que se versiona. Las imágenes remotas no la tienen. Si no hay foto, se muestra un marcador con los colores del tema. En modo oscuro las fotos se atenúan levemente.
-
-**Logo:** va en `public/logos/`, con fondo transparente, y se configura en `branding.logo`. Si en modo oscuro no se ve bien, agrega una versión en `branding.logoDark`. Reemplaza también `src/app/favicon.ico`.
-
-**Colores y modo oscuro:** `theme` es la paleta clara y `themeDark` (opcional) la oscura. Si `themeDark` existe, el sitio sigue la preferencia del sistema y muestra un botón sol/luna en el header; la elección se guarda en el navegador. Un negocio con una sola paleta (la barbería de ejemplo, oscura) no muestra el botón. `accentText` es el acento usado como texto: debe tener contraste de 4,5:1 sobre `background` y `surface`, igual que cada par texto/fondo en ambas paletas.
-
-**Textos de botones:** `actions` (opcional) adapta "Cotiza tu proyecto", "Ver todas las obras", "Ver obra" al rubro; sin valor se usa un texto genérico.
-
-### 4. Dejar un solo negocio en el clon
-
-En el repositorio del cliente:
-
-1. Borra las carpetas de `src/sites/` que no correspondan.
-2. En `src/sites/index.ts`, deja registrado solo ese negocio y ajusta `DEFAULT_SITE`.
-3. En `.github/workflows/ci.yml`, deja solo ese sitio en la matriz `site`.
-4. Importa en GitHub la protección de `main` desde `.github/rulesets/main.json` (ver Integración continua).
-5. Regenera el grafo de graphify con `graphify update .`, porque el que trae el clon describe la base. Si el clon no usará graphify, borra `graphify-out/` y la sección `## graphify` de `CLAUDE.md`.
-
-### 5. graphify (opcional)
-
-El repositorio incluye un grafo del código en `graphify-out/` y la skill en `.claude/skills/graphify/`, que Claude Code usa para orientarse en el proyecto. Para usarlo, instala la CLI una vez por máquina:
-
-```bash
-uv tool install graphifyy   # o: pipx install graphifyy
-graphify hook install       # hook post-commit que actualiza el grafo después de cada commit
-```
-
-El hook de git no se copia con el repositorio: instálalo en cada clon. Los hooks de Claude Code (`.claude/settings.json`) no hacen nada si graphify no está instalado.
-
-## Cómo crecer en un proyecto (fuera de la base)
-
-| Necesidad | Dónde |
-| --- | --- |
-| Login / panel privado | Nuevo grupo de rutas `src/app/(dashboard)/` con su propio layout, más `src/app/(auth)/login`. |
-| Base de datos o CMS | Reescribir las funciones de `src/lib/data.ts`. |
-| Nueva sección (ej: precios, FAQ) | Componente en `components/sections/`, tipo en `types/content.ts` y nueva clave en `sections`/`labels`. |
-| Catálogo / e-commerce | Ruta `src/app/(site)/productos/` siguiendo el patrón de `trabajos/`. |
-| Formulario de contacto | Server Action + servicio de correo (documentar variables en `.env.example`). |
+La foto del hero es **provisional** (la portada de AgendaPro) hasta tener fotos del local.
 
 ## Despliegue en Vercel
 
-1. Importa el repositorio en Vercel (detecta Next.js automáticamente).
-2. Si el repositorio aún tiene varios negocios, define la variable `SITE_ID`.
-3. Asigna el dominio y actualiza `url` en la configuración del negocio.
+1. Importar el repositorio en Vercel (detecta Next.js automáticamente). No hace falta `SITE_ID`.
+2. Asignar el dominio y actualizar `url` en `src/sites/barbershop/config.ts` (hoy es provisional: `https://ica-cuts-barber-shop.vercel.app`).
 
 Vercel publica cada push a `main` en producción y cada PR como vista previa.
 
 > Nota: con Cache Components, una URL de trabajo inexistente (`/trabajos/no-existe`) muestra la página 404 con `noindex`, pero responde HTTP 200 porque la página se transmite por streaming. Es el comportamiento esperado de Next.js 16.
 
-## Licencia
+## graphify (opcional)
 
-Define la licencia del repositorio antes de distribuir o reutilizar públicamente el código.
+El repositorio incluye un grafo del código en `graphify-out/`, que Claude Code usa para orientarse. Para mantenerlo al día, instala la CLI una vez por máquina:
+
+```bash
+uv tool install graphifyy   # o: pipx install graphifyy
+graphify hook install       # hook post-commit que actualiza el grafo
+```
+
+## Pendientes
+
+- Probar una reserva completa desde un iPhone con la agenda en el pop-up (después del primer despliegue).
+- Fotos reales del local para el hero y para activar Trabajos (`sections.projects`).
+- Dominio propio.
+- Medir cuántas personas abren la agenda (por ejemplo, con Vercel Analytics).
