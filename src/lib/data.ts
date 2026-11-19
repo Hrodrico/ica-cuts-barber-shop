@@ -44,9 +44,14 @@ export async function getProject(slug: string): Promise<Project | undefined> {
   return content.projects.find((p) => p.slug === slug);
 }
 
-export async function getReviews(options?: { projectSlug?: string }): Promise<Review[]> {
+/** `latest`: solo las N más recientes, de la más nueva a la más antigua (sin fecha al final). */
+export async function getReviews(options?: { projectSlug?: string; latest?: number }): Promise<Review[]> {
   "use cache";
-  return options?.projectSlug
+  const reviews = options?.projectSlug
     ? content.reviews.filter((r) => r.projectSlug === options.projectSlug)
     : content.reviews;
+  if (options?.latest === undefined) return reviews;
+  return [...reviews]
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
+    .slice(0, options.latest);
 }

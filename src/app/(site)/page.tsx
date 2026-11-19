@@ -9,6 +9,9 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ReviewsSection } from "@/components/sections/ReviewsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 
+// Múltiplo de 6 (reseñas por página en escritorio): el carrusel no termina en una página a medias.
+const HOME_REVIEWS = 18;
+
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
@@ -21,7 +24,7 @@ export default async function HomePage() {
     getServices(),
     getProjects({ featured: true }),
     getProjects(),
-    getReviews(),
+    getReviews({ latest: HOME_REVIEWS }),
   ]);
   // Destacados primero; el resto solo completa la fila en tablet (ver visibleCount).
   const projects = [...featuredProjects, ...allProjects.filter((project) => !project.featured)];
