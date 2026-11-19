@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
@@ -49,6 +50,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </Script>
         )}
         {children}
+        {/* Vercel Web Analytics: solo envía datos en producción en Vercel (en local no hace nada). */}
+        <Analytics />
       </body>
     </html>
   );
