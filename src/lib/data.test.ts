@@ -46,6 +46,16 @@ describe("getReviews", () => {
     expect(await getReviews()).toEqual(content.reviews);
   });
 
+  it("con latest devuelve solo las N más recientes, de la más nueva a la más antigua", async () => {
+    const latest = Math.max(1, content.reviews.length - 1);
+    const reviews = await getReviews({ latest });
+    const dates = reviews.map((review) => review.date ?? "");
+    const newest = content.reviews.map((review) => review.date ?? "").sort().reverse();
+
+    expect(reviews).toHaveLength(Math.min(latest, content.reviews.length));
+    expect(dates).toEqual(newest.slice(0, reviews.length));
+  });
+
   it("filtra por trabajo", async () => {
     for (const project of content.projects) {
       const reviews = await getReviews({ projectSlug: project.slug });
