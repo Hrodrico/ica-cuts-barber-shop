@@ -1,5 +1,6 @@
 import type { Review } from "@/types/content";
 import { Container } from "@/components/layout/Container";
+import { CardCarousel } from "@/components/ui/CardCarousel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ReviewCard } from "./ReviewCard";
 
@@ -16,13 +17,11 @@ export function ReviewsSection({ id, label, reviews }: Props) {
     <section id={id} aria-labelledby={`${id}-title`} className="py-16 sm:py-24">
       <Container>
         <SectionHeading id={`${id}-title`} title={label} />
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <CardCarousel label={label}>
           {reviews.map((review) => (
-            <li key={review.id}>
-              <ReviewCard review={review} />
-            </li>
+            <ReviewCard key={review.id} review={review} />
           ))}
-        </ul>
+        </CardCarousel>
       </Container>
     </section>
   );
