@@ -48,9 +48,9 @@
     "semantic_hash": "dde7d08ead6d5e7758c4db3d5ad0080f"
   },
   "package.json": {
-    "mtime": 1794933778.4102223,
-    "seen": 1794934091.295598,
-    "ast_hash": "ee9b48a6676ba4e673aeeb449ff9ace3",
+    "mtime": 1795118925.4179695,
+    "seen": 1795118961.940518,
+    "ast_hash": "c89627cf28ff1cfa982e6f8bd4309028",
     "semantic_hash": ""
   },
   "playwright.config.ts": {
@@ -66,8 +66,8 @@
     "semantic_hash": ""
   },
   "src/app/(site)/page.tsx": {
-    "mtime": 1795099587.948127,
-    "seen": 1795099633.6949801,
+    "mtime": 1795118861.7039146,
+    "seen": 1795118961.940522,
     "ast_hash": "05c14317f35dce80833c37377e6fb917",
     "semantic_hash": ""
   },
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
-    "mtime": 1794865245.2439017,
-    "seen": 1794866776.984709,
-    "ast_hash": "37370b95bdbbe24179517f9f34ad9d13",
+    "mtime": 1795118932.175062,
+    "seen": 1795118961.9405272,
+    "ast_hash": "06a4a63e267ffa86866e2c9b7ecb247b",
     "semantic_hash": ""
   },
   "src/app/not-found.tsx": {
@@ -180,8 +180,8 @@
     "semantic_hash": "c56e9c40a730d27b55636838b7bf0148"
   },
   "src/components/sections/ReviewsSection.tsx": {
-    "mtime": 1795099086.0793467,
-    "seen": 1795099130.5140932,
+    "mtime": 1795118861.7044163,
+    "seen": 1795118961.9405499,
     "ast_hash": "a6cf6768158b5c863c0ac656ced9d7c2",
     "semantic_hash": ""
   },
@@ -264,14 +264,14 @@
     "semantic_hash": "ca95e3d65cda14db5ab8115ddf8a43f9"
   },
   "src/lib/data.test.ts": {
-    "mtime": 1795099587.948252,
-    "seen": 1795099633.6950321,
+    "mtime": 1795118861.708128,
+    "seen": 1795118961.940574,
     "ast_hash": "05e74b47aa985c69b4dd6af3d0bd45ac",
     "semantic_hash": ""
   },
   "src/lib/data.ts": {
-    "mtime": 1795099587.9479856,
-    "seen": 1795099633.695033,
+    "mtime": 1795118861.708492,
+    "seen": 1795118961.940574,
     "ast_hash": "35df76ee68dd52a5b7e00cd9c2dbd417",
     "semantic_hash": ""
   },
@@ -324,8 +324,8 @@
     "semantic_hash": ""
   },
   "src/sites/barbershop/content.ts": {
-    "mtime": 1795098790.3304894,
-    "seen": 1795098794.3067389,
+    "mtime": 1795118861.7092853,
+    "seen": 1795118961.940588,
     "ast_hash": "067c92ed5c0396d2b66b015946b78631",
     "semantic_hash": ""
   },
@@ -384,9 +384,9 @@
     "semantic_hash": "c98dbebb744eadc1acc4b9f58bfe0f42"
   },
   "CLAUDE.md": {
-    "mtime": 1795037586.641035,
-    "seen": 1795098217.367855,
-    "ast_hash": "4fd94f4ee7935b640e36fffd6b144398",
+    "mtime": 1795118861.695615,
+    "seen": 1795118961.9405959,
+    "ast_hash": "6d31400f86024c7521c4b17e1813d278",
     "semantic_hash": ""
   },
   "README.md": {
@@ -408,8 +408,8 @@
     "semantic_hash": ""
   },
   "scripts/generate-image-placeholders.mjs": {
-    "mtime": 1794865246.2422867,
-    "seen": 1794934091.2956002,
+    "mtime": 1794865245.2422867,
+    "seen": 1795118961.94052,
     "ast_hash": "7b501a93fd2e655fd79dd48b433ee779",
     "semantic_hash": ""
   },
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "src/generated/image-placeholders.json": {
-    "mtime": 1795099699.7858863,
-    "seen": 1795099708.4049401,
+    "mtime": 1795118949.3799808,
+    "seen": 1795118961.9405692,
     "ast_hash": "a14508d48bad97e5e4ca873589474670",
     "semantic_hash": ""
   },
@@ -606,21 +606,21 @@
     "semantic_hash": ""
   },
   "src/components/ui/CardCarousel.test.tsx": {
-    "mtime": 1795099681.5848966,
-    "seen": 1795099708.40492,
+    "mtime": 1795118861.7050967,
+    "seen": 1795118961.940555,
     "ast_hash": "c9f32ec9fa0144ba9ec03f300bd00da6",
     "semantic_hash": ""
   },
   "src/components/ui/CardCarousel.tsx": {
-    "mtime": 1795099681.5847337,
-    "seen": 1795099708.404921,
+    "mtime": 1795118861.705914,
+    "seen": 1795118961.940555,
     "ast_hash": "2720323ac15049759dc62246c2afa48f",
     "semantic_hash": ""
   },
   "package-lock.json": {
-    "mtime": 1794933778.4095542,
-    "seen": 1794934091.295677,
-    "ast_hash": "bfe1ae3555a71896169aa129783e8c2e",
+    "mtime": 1795118925.4752014,
+    "seen": 1795118961.940602,
+    "ast_hash": "6d5e46e010e5a1ddbf5aa93bcfb8dd4b",
     "semantic_hash": ""
   }
 }
